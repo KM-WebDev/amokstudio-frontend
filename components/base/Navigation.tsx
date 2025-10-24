@@ -22,7 +22,7 @@ export default function Navigation() {
                 "lg:static lg:z-100000 lg:translate-y-0 lg:bg-transparent lg:py-0 lg:transition-none",
                 isNavOpen
                     ? "max-lg:flex max-lg:translate-y-full"
-                    : "max-lg:translate-y-0"
+                    : "max-lg:translate-y-[-50%]"
             )}
         >
             <ul className="flex flex-col gap-8 capitalize lg:flex-row">

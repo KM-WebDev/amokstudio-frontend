@@ -23,14 +23,21 @@ interface PortfolioDisplayProps {
 
 export default function PortfolioDisplay({ portflios }: PortfolioDisplayProps) {
     return (
-        <>
-            <Image
-                src={urlFor(portflios[0].mainImage).width(800).url()}
-                alt={portflios[0].title}
-                width={800}
-                height={600}
-            />
-            <p>ewoihre2orh</p>
-        </>
+        <div>
+            {portflios.map((portflio, i) => {
+                if (portflio.mainImage == null) {
+                    return;
+                }
+                return (
+                    <Image
+                        key={i}
+                        src={urlFor(portflio.mainImage).width(200).url()}
+                        alt={portflio.title}
+                        width={200}
+                        height={600 / 3}
+                    />
+                );
+            })}
+        </div>
     );
 }
