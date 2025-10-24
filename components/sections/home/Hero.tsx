@@ -3,8 +3,9 @@ import HeroServer from "./Hero.server";
 
 export default function Hero() {
     return (
-        <HeroClient>
-            <HeroServer />
-        </HeroClient>
+        // <HeroClient>
+        //     <HeroServer />
+        // </HeroClient>
+        <></>
     );
 }
