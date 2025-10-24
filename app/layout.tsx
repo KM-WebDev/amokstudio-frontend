@@ -1,5 +1,5 @@
 import "./globals.css";
-import AppUtilities from "@/components/base/AppUtilities";
+import AppUtilities from "@/components/controls/AppUtilities";
 import Header from "@/components/base/Header";
 import Main from "@/components/base/Main";
 import Footer from "@/components/base/Footer";
