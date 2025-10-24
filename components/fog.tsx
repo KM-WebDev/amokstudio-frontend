@@ -47,7 +47,7 @@ export default function Fog({ children, className, scrollRef }: FogProps) {
         const fog = VANTA.FOG({ el: ref.current, ...fogInitialConfig });
 
         fogRef.current = fog;
-        const speed = 0.5;
+        const speed = 1;
         const zoom = 5;
         fogRef.current.setOptions({ speed, zoom });
 
@@ -58,9 +58,9 @@ export default function Fog({ children, className, scrollRef }: FogProps) {
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         if (!fogRef.current) return;
-        const speed = clamp(latest * 5 - 1, 0.5, 5);
+        // const speed = clamp(latest * 5 - 1, 0.5, 5);
         const zoom = clamp(5 - latest * 5, 0, 5);
-        fogRef.current.setOptions({ speed, zoom });
+        fogRef.current.setOptions({ zoom });
     });
 
     return (

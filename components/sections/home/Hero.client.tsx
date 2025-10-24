@@ -6,14 +6,7 @@ import { motionValue, MotionValue } from "motion";
 import { useScroll, useTransform } from "motion/react";
 import * as motion from "motion/react-client";
 
-import {
-    createContext,
-    HTMLAttributes,
-    ReactNode,
-    RefObject,
-    useContext,
-    useRef,
-} from "react";
+import { createContext, ReactNode, RefObject, useContext, useRef } from "react";
 
 interface HeroContext {
     scrollYProgress: MotionValue<number>;
