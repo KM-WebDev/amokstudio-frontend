@@ -3,12 +3,7 @@ import { HTMLAttributes, ReactNode, RefObject, useEffect, useRef } from "react";
 import { VANTA } from "../lib/thirdparty/vanta-js/vanta.fog";
 import * as THREE from "three";
 import * as motion from "motion/react-client";
-import {
-    useInView,
-    useMotionValueEvent,
-    useScroll,
-    useTransform,
-} from "motion/react";
+import { MotionValue, useMotionValueEvent, useScroll } from "motion/react";
 import { cn } from "@/lib/utils/cn";
 import { clamp } from "@/lib/utils/helpers";
 
@@ -16,6 +11,7 @@ interface FogProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode;
     className?: string;
     scrollRef?: RefObject<HTMLDivElement | null>;
+    scrollYProgress?: MotionValue<number>;
 }
 
 const fogInitialConfig = {
@@ -36,19 +32,14 @@ const fogInitialConfig = {
     mobileZoom: 6,
 };
 
-export default function Fog({ children, className }: FogProps) {
+export default function Fog({ children, className, scrollRef }: FogProps) {
     const ref = useRef<HTMLDivElement | null>(null);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fogRef = useRef<any>(null);
     const { scrollYProgress } = useScroll({
-        target: ref,
+        target: scrollRef ? scrollRef : ref,
         offset: ["start start", "end start"],
     });
-    // const isInView = useInView(ref);
-
-    // const scale = useTransform(scrollYProgress, [0, 1], [1, 3]);
-
-    useEffect(() => {});
 
     useEffect(() => {
         if (!ref.current) return;
@@ -66,13 +57,9 @@ export default function Fog({ children, className }: FogProps) {
     }, []);
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        console.log("scroll: ", latest);
         if (!fogRef.current) return;
         const speed = clamp(latest * 5 - 1, 0.5, 5);
-        const zoom = clamp(5 - latest * 5, 0.5, 5);
-
-        console.log(zoom);
-
+        const zoom = clamp(5 - latest * 5, 0, 5);
         fogRef.current.setOptions({ speed, zoom });
     });
 

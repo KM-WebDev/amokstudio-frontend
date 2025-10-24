@@ -1,10 +1,11 @@
 import { cn } from "@/lib/utils/cn";
+import { HTMLAttributes, ReactNode } from "react";
 type paddingDirection = "top" | "bottom";
 
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
-    padded?: paddingDirection[];
+    padded?: paddingDirection[] | boolean;
     paddingSize?: "sm" | "md" | "lg";
 }
 
@@ -65,8 +66,12 @@ export default function Section({
         <section
             className={cn(
                 "flex flex-col items-center",
-                padded.includes("top") && sectionPaddingTop[paddingSize],
-                padded.includes("bottom") && sectionPaddingBottom[paddingSize],
+                Array.isArray(padded) &&
+                    padded.includes("top") &&
+                    sectionPaddingTop[paddingSize],
+                Array.isArray(padded) &&
+                    padded.includes("bottom") &&
+                    sectionPaddingBottom[paddingSize],
                 className
             )}
         >
