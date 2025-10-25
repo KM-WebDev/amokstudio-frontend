@@ -1,4 +1,5 @@
 import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
     // const secret = process.env.REVALIDATE_SECRET;
@@ -9,5 +10,5 @@ export async function GET(request: Request) {
     // console.log(actionType);
     revalidatePath("/", "layout");
     revalidatePath("/portfolio/[productId]", "page");
-    return NextResponse.json({ revalidated: true, now: Date.now() });
+    return NextResponse.json({ success: true });
 }
