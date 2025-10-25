@@ -16,7 +16,7 @@ export default function Navigation() {
             {isNavOpen &&
                 createPortal(
                     <div
-                        className="fixed inset-0 z-100 bg-neutral-500/90"
+                        className="fixed inset-0 bg-red-300/50 backdrop-blur-sm"
                         onClick={closeNav}
                     />,
                     document.body
@@ -24,7 +24,7 @@ export default function Navigation() {
             <nav
                 className={cn(
                     // Phone
-                    "m-5 translate-y-0 rounded-xl bg-neutral-50 px-10 py-10 backdrop-blur-xl transition-[translate]",
+                    "rounded-x m-5 translate-y-0 bg-neutral-300 px-10 py-10 backdrop-blur-xl transition-[translate]",
                     "lg:static lg:z-100000 lg:translate-y-0 lg:bg-transparent lg:px-4 lg:py-0 lg:transition-none",
                     isNavOpen
                         ? "max-lg:flex max-lg:translate-y-0"
@@ -36,6 +36,7 @@ export default function Navigation() {
                         return (
                             <li key={route.name}>
                                 <NavLink
+                                    onClick={closeNav}
                                     route={route}
                                     className="cursor-pointer hover:text-gray-900"
                                     activeClassName=""

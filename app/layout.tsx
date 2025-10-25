@@ -5,6 +5,7 @@ import Main from "@/components/base/Main";
 import Footer from "@/components/base/Footer";
 
 import NavigationControls from "@/components/controls/context/NavigationControls";
+// import ScrollableArea from "@/components/base/ScrollableArea";
 
 export default function RootLayout({
     children,
@@ -13,13 +14,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pl">
-            <body className="bg-red-500">
+            <body className="overscroll-none">
                 {/* <GlobalControls> */}
                 <NavigationControls>
                     <Header />
                     <AppUtilities />
+                    {/* <ScrollableArea> */}
                     <Main>{children}</Main>
                     <Footer />
+                    {/* </ScrollableArea> */}
                 </NavigationControls>
                 {/* </GlobalControls> */}
             </body>
