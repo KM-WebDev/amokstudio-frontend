@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     // console.log(actionType);
     console.log("Revalidating...");
     await setTimeout(5000);
-
+    console.log("Revalidated...");
     revalidatePath("/", "layout");
     revalidatePath("/portfolio/[productId]", "page");
 
