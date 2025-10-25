@@ -1,4 +1,3 @@
-// import PortfolioDisplay from "@/components/Portfolio";
 import Hero from "@/components/pages/home/Hero";
 import PageContent from "./PageContent";
 

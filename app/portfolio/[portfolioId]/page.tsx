@@ -1,4 +1,4 @@
-import { client } from "@/services/sanity/client";
+import { client, sanityFetch } from "@/services/sanity/client";
 import {
     PORTFOLIO_SINGLE_QUERY,
     PORTFOLIO_IDS_QUERY,
@@ -56,18 +56,22 @@ const options: FilteredResponseQueryOptions = { next: { revalidate: false } };
 
 export default async function Portfolio(props: PortfolioPageProps) {
     const { portfolioId } = await props.params;
-    const portfolio: Portfolio = await client.fetch(PORTFOLIO_SINGLE_QUERY, {
-        portfolioId: portfolioId,
+    const { data } = await sanityFetch({
+        query: PORTFOLIO_SINGLE_QUERY,
+        params: {
+            portfolioId,
+        },
     });
+    const portfolio: Portfolio = data;
 
     if (!portfolio || !portfolio.sections) {
         return;
     }
-    console.log(
-        portfolio.sections[0].content
-            .map((line) => line.children.map((part) => part.text).join(""))
-            .join("\n")
-    );
+    // console.log(
+    //     portfolio.sections[0].content
+    //         .map((line) => line.children.map((part) => part.text).join(""))
+    //         .join("\n")
+    // );
     return portfolio.sections.map((section) => (
         <PortableText key={section._key} value={section.content}></PortableText>
     ));
