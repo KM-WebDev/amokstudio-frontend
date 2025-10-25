@@ -55,7 +55,7 @@ export default function NavigationMobile({
                 transition={{ type: "tween", duration: 0.2 }}
                 className={cn(
                     // Phone
-                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-2000"
+                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-2000 will-change-transform"
                 )}
             >
                 <ul className="flex w-full flex-col gap-4 text-lg capitalize">

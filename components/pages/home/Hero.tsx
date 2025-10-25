@@ -29,7 +29,7 @@ export default function Hero() {
                 >
                     <HeroHeading />
                 </HeroHeadingContainer>
-                <HeroScrollArrowsContainer className="fixed right-0 bottom-2 z-10 mb-5 flex w-full items-end justify-center gap-5 px-5 text-zinc-500">
+                <HeroScrollArrowsContainer className="fixed right-0 bottom-2 z-10 mb-5 flex w-full items-end justify-center gap-2 px-5 text-sm text-zinc-500">
                     <span className="">Zjedz niżej</span>
                     <ScrollArrows />
                 </HeroScrollArrowsContainer>
@@ -40,7 +40,7 @@ export default function Hero() {
 
 function HeroHeading() {
     return (
-        <h1 className="flex flex-col justify-center gap-3 px-4 text-3xl lg:gap-3 lg:text-7xl">
+        <h1 className="flex flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0} preset="blur">
                 Reklama
             </TextEffect>

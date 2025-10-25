@@ -1,16 +1,16 @@
 @theme {
-    --animate-arrow: animateArrow 2s infinite;
+    --animate-arrow: animateArrow 3s infinite;
     @keyframes animateArrow {
         0% {
             opacity: 0;
-            transform: translate(0, -10px);
+            transform: translate(0, -0.33em);
         }
         50% {
             opacity: 1;
         }
         100% {
             opacity: 0;
-            transform: translate(0, 10px);
+            transform: translate(0, 0.33em);
         }
     }
 }

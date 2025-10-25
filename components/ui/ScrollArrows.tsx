@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils/cn";
 import { IoIosArrowDown } from "react-icons/io";
-const arrowClassName = "h-4 animate-arrow  text-3xl";
+const arrowClassName = "h-2 animate-arrow  text-xl";
 export default function ScrollArrows({ className }: { className?: string }) {
     return (
         <div className={cn("", className)}>

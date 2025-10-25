@@ -1,5 +1,6 @@
 "use client";
 
+import { NavigationControlsContext } from "@/controls/context/NavigationControls";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import { motionValue, MotionValue } from "motion";
@@ -17,6 +18,7 @@ import {
     ReactNode,
     RefObject,
     useContext,
+    useEffect,
     useRef,
     useState,
 } from "react";
@@ -46,15 +48,15 @@ export default function HeroClient({ children }: BasicComponentProps) {
         offset: ["start start", "end start"],
     });
 
-    useMotionValueEvent(scrollStartEnd, "change", (latest) =>
-        console.log(latest)
-    );
+    const { isNavOpen } = useContext(NavigationControlsContext);
 
     return (
         <HeroContext.Provider
             value={{ scrollEndEnd, scrollStartEnd, scrollRef }}
         >
-            <div ref={scrollRef}>{children}</div>
+            <div className={cn(isNavOpen && "opacity-0")} ref={scrollRef}>
+                {children}
+            </div>
         </HeroContext.Provider>
     );
 }
@@ -85,13 +87,14 @@ export function HeroHeadingContainer({
     const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
     const [isVisible, setIsVisible] = useState(true);
-
+    const { isNavOpen } = useContext(NavigationControlsContext);
     useMotionValueEvent(scrollStartEnd, "change", (latest) => {
         if (latest > 0.25) {
             // When scroll passes 20% of section height
             controls.start("hidden");
             setIsVisible(false);
         } else {
+            if (isNavOpen) return;
             if (!isVisible && latest < 0.3) {
                 controls.start("visible");
             } else {
@@ -111,7 +114,7 @@ export function HeroHeadingContainer({
             animate={controls}
             transition={{ duration: 0.2 }}
             style={style}
-            className={cn("", className)}
+            className={cn("will-change-transform", className)}
         >
             {children}
         </motion.div>
@@ -135,12 +138,12 @@ export function HeroBgImgContainer({
     return (
         <div className={cn("", className)}>
             <motion.div
-                className="pointer-events-none absolute inset-0 z-20 w-full"
+                className="pointer-events-none absolute inset-0 z-20 w-full will-change-transform"
                 style={{ backdropFilter }}
             />
 
             <motion.div
-                className="absolute right-0 left-0 h-full w-full translate-y-[-50%]"
+                className="absolute right-0 left-0 h-full w-full translate-y-[-50%] will-change-transform"
                 style={{ scale, top }}
             >
                 {children}
@@ -197,7 +200,7 @@ export function HeroSubtitleContainer({
             initial="hidden"
             animate={controls}
             transition={{ duration: 0.2 }}
-            className={cn("", className)}
+            className={cn("will-change-transform", className)}
         >
             {children}
         </motion.div>
@@ -233,7 +236,7 @@ export function HeroScrollArrowsContainer({
             variants={arrowVariants}
             initial={"before"}
             animate={controls}
-            className={className}
+            className={cn("will-change-transform", className)}
             style={{ opacity }}
         >
             {children}
