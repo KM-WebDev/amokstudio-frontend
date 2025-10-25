@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
     // const actionType = request.headers.get("action-type");
     // console.log(actionType);
     console.log("Revalidating...");
-    await setTimeout(5000);
     console.log("Revalidated...");
     revalidatePath("/", "layout");
     revalidatePath("/portfolio/[productId]", "page");
