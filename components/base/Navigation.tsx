@@ -6,39 +6,46 @@ import { cn } from "@/lib/utils/cn";
 import NavLink from "./NavLink";
 import { routes } from "@/app/routes";
 import { NavigationControlsContext } from "../controls/context/NavigationControls";
-
-// isNavOpen
-//     ? "translate-x-0 opacity-100"
-//     : "-translate-x-full opacity-0",
-// "absolute inset-x-0 z-20 w-full flex-1 bg-green-500 px-6 py-4 transition-all duration-300 ease-in-out lg:relative lg:top-0 lg:mt-0 lg:flex lg:w-auto lg:translate-x-0 lg:items-center lg:justify-between lg:bg-transparent lg:p-0 lg:opacity-100 dark:bg-gray-800"
+import { createPortal } from "react-dom";
 
 export default function Navigation() {
-    const { isNavOpen } = useContext(NavigationControlsContext);
+    const { isNavOpen, closeNav } = useContext(NavigationControlsContext);
 
     return (
-        <nav
-            className={cn(
-                "absolute inset-x-0 bottom-0 -z-10 translate-y-full bg-neutral-500 px-5 py-4 transition-[translate]",
-                "lg:static lg:z-100000 lg:translate-y-0 lg:bg-transparent lg:py-0 lg:transition-none",
-                isNavOpen
-                    ? "max-lg:flex max-lg:translate-y-full"
-                    : "max-lg:translate-y-[-50%]"
-            )}
-        >
-            <ul className="flex flex-col gap-8 capitalize lg:flex-row">
-                {routes.map((route) => {
-                    return (
-                        <li key={route.name}>
-                            <NavLink
-                                route={route}
-                                className="cursor-pointer hover:text-gray-900"
-                                activeClassName=""
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
-        </nav>
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-fit translate-y-full overflow-hidden">
+            {isNavOpen &&
+                createPortal(
+                    <div
+                        className="fixed inset-0 z-100 bg-neutral-500/90"
+                        onClick={closeNav}
+                    />,
+                    document.body
+                )}
+            <nav
+                className={cn(
+                    // Phone
+                    "m-5 translate-y-0 rounded-xl bg-neutral-50 px-10 py-10 backdrop-blur-xl transition-[translate]",
+                    "lg:static lg:z-100000 lg:translate-y-0 lg:bg-transparent lg:px-4 lg:py-0 lg:transition-none",
+                    isNavOpen
+                        ? "max-lg:flex max-lg:translate-y-0"
+                        : "max-lg:translate-y-[-150%]"
+                )}
+            >
+                <ul className="flex flex-col gap-8 capitalize lg:flex-row">
+                    {routes.map((route) => {
+                        return (
+                            <li key={route.name}>
+                                <NavLink
+                                    route={route}
+                                    className="cursor-pointer hover:text-gray-900"
+                                    activeClassName=""
+                                />
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </div>
     );
 }
 

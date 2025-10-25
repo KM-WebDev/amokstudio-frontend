@@ -14,11 +14,12 @@ export const viewport: Viewport = {
 };
 
 export default async function Home() {
-    var result = await client.fetch(PORTFOLIO_HOMEPAGE_QUERY);
+    // const result = await client.fetch(PORTFOLIO_HOMEPAGE_QUERY);
+    // console.log(result[0].mainImage);
     return (
         <>
             <Hero />
-            <PortfolioDisplay portflios={result} />
+            {/* <PortfolioDisplay portflios={result} /> */}
             {/* <div className="z-10 h-[300vh] bg-white" /> */}
         </>
     );
