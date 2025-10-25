@@ -1,7 +1,3 @@
-export default function Api() {
-    return <></>;
-}
-
 export async function POST(request: Request) {
     // const secret = process.env.REVALIDATE_SECRET;
     const { path, secret: reqSecret } = await request.json();
