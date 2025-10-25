@@ -5,7 +5,8 @@ export async function POST(request: NextRequest) {
     const envSecret = process.env.REVALIDATE_SECRET;
 
     const reqSecret = request.headers.get("x-sanity-secret");
-
+    console.log(reqSecret);
+    console.log(envSecret);
     if (reqSecret !== envSecret) {
         return new Response("Invalid token", { status: 401 });
     }
