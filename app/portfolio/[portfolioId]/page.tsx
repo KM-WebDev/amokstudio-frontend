@@ -1,6 +1,11 @@
 import { client } from "@/services/sanity/client";
-import { PORTFOLIO_SINGLE_QUERY } from "@/services/sanity/queries";
+import {
+    PORTFOLIO_SINGLE_QUERY,
+    PORTFOLIO_IDS_QUERY,
+} from "@/services/sanity/queries";
 import { PortableText } from "@portabletext/react";
+import Header from "@/components/base/Heading";
+import { FilteredResponseQueryOptions } from "next-sanity";
 
 type ContentLinePartMark = "underline" | "strong";
 type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -46,14 +51,31 @@ interface PortfolioPageProps {
     params: Promise<PortfolioParams>;
 }
 
+const options: FilteredResponseQueryOptions = { next: { revalidate: false } };
+
 export default async function Portfolio(props: PortfolioPageProps) {
     const { portfolioId } = await props.params;
-
     const portfolio: Portfolio = await client.fetch(PORTFOLIO_SINGLE_QUERY, {
-        portfolioId,
+        portfolioId: portfolioId,
     });
+
+    if (!portfolio || !portfolio.sections) {
+        return;
+    }
 
     return portfolio.sections.map((section) => (
         <PortableText key={section._key} value={section.content}></PortableText>
     ));
+}
+
+export async function generateStaticParams() {
+    let sanityPortfolioIds: SanityIdObject[] = await client.fetch(
+        PORTFOLIO_IDS_QUERY,
+        {},
+        options
+    );
+
+    return sanityPortfolioIds.map((sanityPortfolioId) => ({
+        slug: sanityPortfolioId._id,
+    }));
 }

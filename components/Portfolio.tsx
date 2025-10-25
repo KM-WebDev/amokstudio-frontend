@@ -24,7 +24,7 @@ export default function PortfolioDisplay({ portflios }: PortfolioDisplayProps) {
                 }
                 return (
                     <Link
-                        href={`/portfolios/${portflio._id}`}
+                        href={`/portfolio/${portflio._id}`}
                         key={portflio._id}
                     >
                         <Image

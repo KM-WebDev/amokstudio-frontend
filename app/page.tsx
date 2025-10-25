@@ -20,7 +20,7 @@ export default async function Home() {
         <>
             <HeaderHeightPadding />
             <Hero />
-            {/* <PortfolioDisplay portflios={result} /> */}
+            <PortfolioDisplay portflios={result} />
             {Array(100)
                 .fill(0)
                 .map((_, n) => (
@@ -31,4 +31,17 @@ export default async function Home() {
             <div className="z-10 h-[300vh] bg-neutral-600" />
         </>
     );
+}
+
+export async function POST(request: Request) {
+    // const secret = process.env.REVALIDATE_SECRET;
+    // const { path, secret: reqSecret } = await request.json();
+    // if (reqSecret !== secret) {
+    // return new Response("Invalid token", { status: 401 });
+    // }
+    console.log(request.headers);
+    const actionType = request.headers.get("action-type");
+    console.log(actionType);
+    return new Response("", { status: 200 });
+    // return new Response(`Revalidated ${path}`, { status: 200 });
 }

@@ -9,3 +9,7 @@ export const PORTFOLIO_SINGLE_QUERY =
     defineQuery(`*[_type == "portfolio" && _id == $portfolioId][0]{
     title, mainImage, sections, gallery
 }`);
+
+export const PORTFOLIO_IDS_QUERY = defineQuery(`*[_type == "portfolio"]{
+        _id
+}`);

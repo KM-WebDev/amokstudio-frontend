@@ -7,3 +7,7 @@ interface SanityImage {
     _type: "image";
     asset: SanityRef;
 }
+
+interface SanityIdObject {
+    _id: String;
+}
