@@ -1,6 +1,6 @@
 "use client";
 import { HTMLAttributes, ReactNode, RefObject, useEffect, useRef } from "react";
-import { VANTA } from "../lib/thirdparty/vanta-js/vanta.fog";
+// import { VANTA } from "../lib/thirdparty/vanta-js/vanta.fog";
 import * as THREE from "three";
 import * as motion from "motion/react-client";
 import { MotionValue, useMotionValueEvent, useScroll } from "motion/react";
@@ -33,40 +33,40 @@ const fogInitialConfig = {
 };
 
 export default function Fog({ children, className, scrollRef }: FogProps) {
-    const ref = useRef<HTMLDivElement | null>(null);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const fogRef = useRef<any>(null);
-    const { scrollYProgress } = useScroll({
-        target: scrollRef ? scrollRef : ref,
-        offset: ["start start", "end start"],
-    });
+    // const ref = useRef<HTMLDivElement | null>(null);
+    // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // const fogRef = useRef<any>(null);
+    // const { scrollYProgress } = useScroll({
+    //     target: scrollRef ? scrollRef : ref,
+    //     offset: ["start start", "end start"],
+    // });
 
-    useEffect(() => {
-        if (!ref.current) return;
+    // useEffect(() => {
+    //     if (!ref.current) return;
 
-        const fog = VANTA.FOG({ el: ref.current, ...fogInitialConfig });
+    //     const fog = VANTA.FOG({ el: ref.current, ...fogInitialConfig });
 
-        fogRef.current = fog;
-        const speed = 1;
-        const zoom = 5;
-        fogRef.current.setOptions({ speed, zoom });
+    //     fogRef.current = fog;
+    //     const speed = 1;
+    //     const zoom = 5;
+    //     fogRef.current.setOptions({ speed, zoom });
 
-        return () => {
-            if (fog) fog.destroy();
-        };
-    }, []);
+    //     return () => {
+    //         if (fog) fog.destroy();
+    //     };
+    // }, []);
 
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        if (!fogRef.current) return;
-        // const speed = clamp(latest * 5 - 1, 0.5, 5);
-        const zoom = clamp(5 - latest * 5, 0, 5);
-        fogRef.current.setOptions({ zoom });
-    });
+    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    //     if (!fogRef.current) return;
+    //     // const speed = clamp(latest * 5 - 1, 0.5, 5);
+    //     const zoom = clamp(5 - latest * 5, 0, 5);
+    //     fogRef.current.setOptions({ zoom });
+    // });
 
     return (
         <motion.div
             // style={{ scale }}
-            ref={ref}
+            // ref={ref}
             className={cn("relative z-10 h-full w-full", className)}
         >
             {children}
