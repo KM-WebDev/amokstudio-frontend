@@ -20,7 +20,7 @@ export default async function Home() {
         <>
             <HeaderHeightPadding />
             <Hero />
-            {/* <PortfolioDisplay portflios={result} /> */}
+            <PortfolioDisplay portflios={result} />
             {Array(100)
                 .fill(0)
                 .map((_, n) => (
