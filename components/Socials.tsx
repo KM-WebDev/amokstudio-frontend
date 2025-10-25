@@ -18,10 +18,11 @@ function SocialButton({ link, children }: SocialProps) {
 }
 
 export default function Socials({ className }: { className?: string }) {
-    const classNameIcon = "hover:text-rose-700 transition-colors duration-200";
+    const classNameIcon =
+        "hover:text-clr-brand-red transition-colors duration-200";
 
     return (
-        <div className={cn("flex gap-2 text-[2rem]", className)}>
+        <div className={cn("flex gap-2", className)}>
             <SocialButton link="https://facebook.com">
                 <FaFacebookSquare className={classNameIcon} />
             </SocialButton>
