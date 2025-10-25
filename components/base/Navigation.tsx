@@ -29,7 +29,7 @@ export default function Navigation() {
     }, [isNavOpen, scrollRef]);
 
     return (
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-fit translate-y-full overflow-hidden lg:static lg:z-100000 lg:translate-y-0">
+        <div className="absolute inset-x-0 bottom-0 -z-10 translate-y-full overflow-hidden lg:static lg:z-1000 lg:translate-y-0">
             {isNavOpen &&
                 createPortal(
                     <div
@@ -38,10 +38,16 @@ export default function Navigation() {
                     />,
                     document.body
                 )}
+            {/* {isNavOpen && (
+                <div
+                    className="fixed inset-0 bg-red-300/50"
+                    onClick={closeNav}
+                />
+            )} */}
             <nav
                 className={cn(
                     // Phone
-                    "rounded-x py-10transition-[translate] m-5 translate-y-0 rounded-xl px-10",
+                    "rounded-x m-5 translate-y-0 rounded-xl bg-white px-10 py-10 transition-[translate]",
                     "lg:px-4 lg:py-0 lg:transition-none",
                     isNavOpen
                         ? "max-lg:flex max-lg:translate-y-0"
