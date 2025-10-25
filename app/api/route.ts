@@ -5,10 +5,9 @@ export async function GET(request: Request) {
     // if (reqSecret !== secret) {
     // return new Response("Invalid token", { status: 401 });
     // }
-    console.log(request.headers);
     // const actionType = request.headers.get("action-type");
     // console.log(actionType);
     revalidatePath("/", "layout");
     revalidatePath("/portfolio/[productId]", "page");
-    return new Response(``, { status: 200 });
+    return NextResponse.json({ revalidated: true, now: Date.now() });
 }
