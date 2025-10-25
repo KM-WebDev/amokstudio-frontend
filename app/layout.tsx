@@ -17,7 +17,7 @@ export default function RootLayout({
             <body className="overscroll-none">
                 {/* <GlobalControls> */}
                 <NavigationControls>
-                    {/* <Header /> */}
+                    <Header />
                     <AppUtilities />
                     <Main>{children}</Main>
                     <Footer />
