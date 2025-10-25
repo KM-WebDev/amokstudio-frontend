@@ -1,15 +1,9 @@
 import Image from "next/image";
 import { urlFor } from "@/services/sanity/imageUrl";
-
-interface SanityImage {
-    _type: "image";
-    asset: {
-        _ref: string;
-        _type: "reference";
-    };
-}
+import Link from "next/link";
 
 interface PortfolioDisplayEntry {
+    _id: string;
     title: string;
     mainImage: SanityImage;
     description: string;
@@ -24,18 +18,22 @@ interface PortfolioDisplayProps {
 export default function PortfolioDisplay({ portflios }: PortfolioDisplayProps) {
     return (
         <div>
-            {portflios.map((portflio, i) => {
+            {portflios.map((portflio) => {
                 if (portflio.mainImage == null) {
                     return;
                 }
                 return (
-                    <Image
-                        key={i}
-                        src={urlFor(portflio.mainImage).width(200).url()}
-                        alt={portflio.title}
-                        width={200}
-                        height={600 / 3}
-                    />
+                    <Link
+                        href={`/portfolios/${portflio._id}`}
+                        key={portflio._id}
+                    >
+                        <Image
+                            src={urlFor(portflio.mainImage).width(200).url()}
+                            alt={portflio.title}
+                            width={200}
+                            height={600 / 3}
+                        />
+                    </Link>
                 );
             })}
         </div>

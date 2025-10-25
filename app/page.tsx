@@ -15,7 +15,6 @@ export const viewport: Viewport = {
 
 export default async function Home() {
     var result = await client.fetch(PORTFOLIO_HOMEPAGE_QUERY);
-    console.log(result[0].mainImage);
     return (
         <>
             <Hero />
