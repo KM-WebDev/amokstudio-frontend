@@ -1,3 +1,4 @@
+import { HeaderHeightPadding } from "@/components/base/Header.client";
 import PortfolioDisplay from "@/components/Portfolio";
 import Hero from "@/components/sections/home/Hero";
 import { client } from "@/services/sanity/client";
@@ -18,6 +19,7 @@ export default async function Home() {
     // console.log(result[0].mainImage);
     return (
         <>
+            <HeaderHeightPadding />
             <Hero />
             {/* <PortfolioDisplay portflios={result} /> */}
             {Array(100)

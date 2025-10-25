@@ -19,10 +19,8 @@ export default function RootLayout({
                 <NavigationControls>
                     <Header />
                     <AppUtilities />
-                    {/* <ScrollableArea> */}
                     <Main>{children}</Main>
                     <Footer />
-                    {/* </ScrollableArea> */}
                 </NavigationControls>
                 {/* </GlobalControls> */}
             </body>

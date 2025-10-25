@@ -12,6 +12,7 @@ interface Context {
     closeNav: () => void;
     toggleNav: () => void;
     scrollRef: RefObject<number>;
+    headerRef: RefObject<HTMLDivElement | null>;
 }
 
 export const NavigationControlsContext = createContext<Context>({
@@ -20,11 +21,13 @@ export const NavigationControlsContext = createContext<Context>({
     closeNav: () => {},
     toggleNav: () => {},
     scrollRef: { current: 0 },
+    headerRef: { current: null },
 });
 
 export default function NavigationControls({ children }: Props) {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const scrollRef = useRef(0);
+    const headerRef = useRef<HTMLDivElement | null>(null);
     const openNav = () => setIsNavOpen(true);
     const closeNav = () => setIsNavOpen(false);
     const toggleNav = () => setIsNavOpen((x) => !x);
@@ -38,7 +41,14 @@ export default function NavigationControls({ children }: Props) {
 
     return (
         <NavigationControlsContext
-            value={{ isNavOpen, openNav, closeNav, toggleNav, scrollRef }}
+            value={{
+                isNavOpen,
+                openNav,
+                closeNav,
+                toggleNav,
+                scrollRef,
+                headerRef,
+            }}
         >
             {children}
         </NavigationControlsContext>

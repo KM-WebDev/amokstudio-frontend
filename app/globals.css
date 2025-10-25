@@ -11,6 +11,9 @@
     --color-foreground: var(--foreground);
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
+    --breakpoint-xs: 25rem;
+    --color-clr-brand-rose: oklch(0.8835 0.0668 355.93);
+    --color-clr-brand-red: oklch(0.5275 0.2154 28.26);
 }
 
 body {

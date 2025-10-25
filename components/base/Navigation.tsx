@@ -1,96 +1,35 @@
-"use client";
-
-import Hamburger from "hamburger-react";
-import { useContext, useEffect, useRef } from "react";
-import { cn } from "@/lib/utils/cn";
 import NavLink from "./NavLink";
-import { routes } from "@/app/routes";
-import { NavigationControlsContext } from "../controls/context/NavigationControls";
-import { createPortal } from "react-dom";
+import { NavigationRoutesEntry, routes } from "@/app/routes";
+
+import NavigationMobile from "./NavigationMobile";
+import NavigationDesktop from "./NavigationDesktop";
 
 export default function Navigation() {
-    const { isNavOpen, closeNav, scrollRef } = useContext(
-        NavigationControlsContext
-    );
-    const lastScrollRef = useRef<number>(0);
-
-    useEffect(() => {
-        if (isNavOpen) {
-            const scrollY = window.scrollY;
-            document.body.style.position = "fixed";
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = "100%";
-        } else {
-            const scrollY = document.body.style.top;
-            document.body.style.position = "";
-            document.body.style.top = "";
-            window.scrollTo(0, parseInt(scrollY || "0") * -1);
-        }
-    }, [isNavOpen, scrollRef]);
-
+    const generatedLinks = routes.map(generateLink);
     return (
-        <div className="absolute inset-x-0 bottom-0 -z-10 translate-y-full overflow-hidden lg:static lg:z-1000 lg:translate-y-0">
-            {isNavOpen &&
-                createPortal(
-                    <div
-                        className="fixed inset-0 bg-red-300/50"
-                        onClick={closeNav}
-                    />,
-                    document.body
-                )}
-            {/* {isNavOpen && (
-                <div
-                    className="fixed inset-0 bg-red-300/50"
-                    onClick={closeNav}
-                />
-            )} */}
-            <nav
-                className={cn(
-                    // Phone
-                    "rounded-x m-5 translate-y-0 rounded-xl bg-white px-10 py-10 transition-[translate]",
-                    "lg:px-4 lg:py-0 lg:transition-none",
-                    isNavOpen
-                        ? "max-lg:flex max-lg:translate-y-0"
-                        : "max-lg:translate-y-[-150%]"
-                )}
-            >
-                <ul className="flex flex-col gap-8 capitalize lg:flex-row">
-                    {routes.map((route) => {
-                        return (
-                            <li key={route.name}>
-                                <NavLink
-                                    onClick={closeNav}
-                                    route={route}
-                                    className="cursor-pointer hover:text-gray-900"
-                                    activeClassName=""
-                                />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </nav>
-        </div>
+        <>
+            <NavigationMobile
+                generatedLinks={generatedLinks}
+                className={"flex lg:hidden"}
+            />
+            <NavigationDesktop
+                generatedLinks={generatedLinks}
+                className={"hidden lg:flex"}
+            />
+        </>
     );
 }
 
-interface NavigationToggleButton {
-    className?: string;
-    size?: number;
-}
-
-export function NavigationToggleButton({
-    className,
-    size = 24,
-}: NavigationToggleButton) {
-    const { isNavOpen, toggleNav } = useContext(NavigationControlsContext);
-
+function generateLink(route: NavigationRoutesEntry) {
     return (
-        <button
-            type="button"
-            className={cn("", className)}
-            aria-label="toggle menu"
-        >
-            <Hamburger size={size} toggled={isNavOpen} onToggle={toggleNav} />
-        </button>
+        <li key={route.name}>
+            <NavLink
+                closeNavOnClick={true}
+                route={route}
+                className="cursor-pointer text-zinc-600 hover:text-gray-900"
+                activeClassName="underline underline-offset-3"
+                ctaClassName="px-4 py-2 max-lg:mt-5 bg-clr-brand-rose w-full flex text-white justify-center rounded-full"
+            />
+        </li>
     );
 }
