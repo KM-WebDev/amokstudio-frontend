@@ -15,4 +15,7 @@ export const { sanityFetch, SanityLive } = defineLive({
     client,
     serverToken: apiReadToken,
     browserToken: apiReadToken,
+    fetchOptions: {
+        revalidate: false,
+    },
 });
