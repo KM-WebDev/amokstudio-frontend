@@ -13,7 +13,6 @@ export default function Hero() {
             <div className="relative -z-100">
                 <div className="h-[300vh] overflow-hidden md:h-[400vh]"></div>
                 <HeroBgImgContainer className="fixed top-0 right-0 left-0 flex h-screen w-full items-center justify-center">
-                    {/* <div style={style} className="h-full w-full" /> */}
                     <Image
                         src={"/amokstudio-red.svg"}
                         fill
@@ -38,7 +37,7 @@ export default function Hero() {
 
 function HeroHeading() {
     return (
-        <h1 className="flex flex-col justify-center gap-5 text-4xl lg:gap-3 lg:text-7xl">
+        <h1 className="flex flex-col justify-center gap-3 px-4 text-3xl lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0} preset="blur">
                 Reklama
             </TextEffect>

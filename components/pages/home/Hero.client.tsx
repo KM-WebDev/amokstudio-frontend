@@ -135,15 +135,14 @@ export function HeroBgImgContainer({
     children,
 }: HeroBgImgContainer) {
     const { scrollStartEnd } = useContext(HeroContext);
-    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.5, 1.5]);
-    const blurBackground = useTransform(scrollStartEnd, [0, 0.5], [25, 0]);
+    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [1, 1.5]);
+    const blurBackground = useTransform(scrollStartEnd, [0, 0.5], [15, 0]);
     const backdropFilter = useMotionTemplate`blur(${blurBackground}px)`;
-    const top = useTransform(scrollStartEnd, [0.5, 0.7], ["50%", "15%"]);
-    // const opacity = useTransform(scrollStartEnd, [0.85, 0.95], [1, 0]);
-    // const blurText = useTransform(scrollStartEnd, [0.85, 0.95], [0, 5]);
-    // const filter = useMotionTemplate`blur(${blurText}px)`;
-
-    const left = useTransform(scrollStartEnd, [0.8, 0.95], ["0", "-100svw"]);
+    const top = useTransform(
+        scrollStartEnd,
+        [0.5, 0.7, 0.9, 1],
+        ["50%", "15%", "15%", "-10%"]
+    );
 
     return (
         <div className={cn("", className)}>
@@ -154,7 +153,7 @@ export function HeroBgImgContainer({
 
             <motion.div
                 className="absolute right-0 left-0 h-full w-full translate-y-[-50%]"
-                style={{ scale, top, left }}
+                style={{ scale, top }}
             >
                 {children}
             </motion.div>
