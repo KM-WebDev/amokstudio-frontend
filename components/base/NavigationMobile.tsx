@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useContext, useEffect } from "react";
-import { NavigationControlsContext } from "../controls/context/NavigationControls";
+import { NavigationControlsContext } from "../../controls/context/NavigationControls";
 import { createPortal } from "react-dom";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils/cn";
@@ -21,7 +21,7 @@ export default function NavigationMobile({
     );
 
     const navVariants = {
-        hidden: { y: "-150%", opacity: 0 },
+        hidden: { y: "-150%", opacity: 1 },
         visible: { y: 0, opacity: 1 },
     };
 
@@ -55,7 +55,7 @@ export default function NavigationMobile({
                 transition={{ type: "tween", duration: 0.2 }}
                 className={cn(
                     // Phone
-                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-200"
+                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-2000"
                 )}
             >
                 <ul className="flex w-full flex-col gap-4 text-lg capitalize">

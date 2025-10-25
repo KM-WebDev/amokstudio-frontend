@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils/cn";
-import { HTMLAttributes, ReactNode } from "react";
 type paddingDirection = "top" | "bottom";
 
 interface SectionProps {

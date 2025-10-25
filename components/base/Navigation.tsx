@@ -1,11 +1,12 @@
 import NavLink from "./NavLink";
-import { NavigationRoutesEntry, routes } from "@/app/routes";
+import { routes } from "@/app/routes";
 
 import NavigationMobile from "./NavigationMobile";
 import NavigationDesktop from "./NavigationDesktop";
+import { useMemo } from "react";
 
 export default function Navigation() {
-    const Links = <GeneratedLinks />;
+    const Links = useMemo(() => <GeneratedLinks />, []);
     return (
         <>
             <NavigationMobile
@@ -29,7 +30,7 @@ function GeneratedLinks() {
                     route={route}
                     className="cursor-pointer text-zinc-600 hover:text-gray-900"
                     activeClassName="underline underline-offset-3"
-                    ctaClassName="px-4 py-2 max-lg:mt-5 bg-clr-brand-rose w-full flex text-white justify-center rounded-full"
+                    ctaClassName="px-4 py-1.5 max-lg:mt-5 bg-clr-brand-rose w-full flex text-white justify-center rounded-full"
                 />
             </li>
         );

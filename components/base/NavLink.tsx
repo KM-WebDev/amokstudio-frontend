@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavigationRoutesEntry } from "@/app/routes";
 import { useContext } from "react";
-import { NavigationControlsContext } from "../controls/context/NavigationControls";
+import { NavigationControlsContext } from "../../controls/context/NavigationControls";
 
 const normalize = (path: string) => {
     return path === "/"

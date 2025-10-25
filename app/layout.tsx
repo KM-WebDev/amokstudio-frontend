@@ -1,10 +1,10 @@
 import "./globals.css";
-import AppUtilities from "@/components/controls/AppUtilities";
+import AppUtilities from "@/controls/AppUtilities";
 import Header from "@/components/base/Header";
 import Main from "@/components/base/Main";
 import Footer from "@/components/base/Footer";
 
-import NavigationControls from "@/components/controls/context/NavigationControls";
+import NavigationControls from "@/controls/context/NavigationControls";
 // import ScrollableArea from "@/components/base/ScrollableArea";
 
 export default function RootLayout({

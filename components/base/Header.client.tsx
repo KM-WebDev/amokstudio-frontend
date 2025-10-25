@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useCallback, useContext, useEffect, useRef } from "react";
-import { NavigationControlsContext } from "../controls/context/NavigationControls";
+import { NavigationControlsContext } from "../../controls/context/NavigationControls";
 
 interface HeaderContainerProps {
     children: ReactNode;
