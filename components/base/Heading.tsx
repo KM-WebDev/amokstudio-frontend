@@ -9,7 +9,7 @@ interface HeadingProps {
     className?: string;
 }
 
-const headingStyles = {
+export const headingStyles = {
     h1: cn(
         "text-3xl font-bold",
         "xs:text-3xl",

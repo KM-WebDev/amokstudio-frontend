@@ -1,13 +1,19 @@
-import Heading from "@/components/base/Heading";
+import Heading, { headingStyles } from "@/components/base/Heading";
 import { cn } from "@/lib/utils/cn";
+
 import { client } from "@/services/sanity/client";
 import { PORTFOLIO_SINGLE_QUERY } from "@/services/sanity/queries";
+import { JSX } from "react";
 
-type ContentStyle = "underline" | "strong";
+// Forgive me for this code ...
+
+type ContentLinePartMark = "underline" | "strong";
+type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type ContnetStyle = HeadingType | "blockquote" | "normal";
 
 interface ContentLinePart {
     _key: string;
-    marks: Array<ContentStyle>;
+    marks: Array<ContentLinePartMark>;
     text: string;
 }
 
@@ -15,6 +21,7 @@ interface ContentLinePart {
 // That line is split into children for styling (one part of the line might be underlined and the other bolded)
 interface ContentLine {
     _key: string;
+    style: ContnetStyle;
     children: Array<ContentLinePart>;
 }
 
@@ -50,16 +57,15 @@ export default async function Portfolio(props: PortfolioPageProps) {
         portfolioId,
     });
 
-    // console.log(portfolio);
-    // console.log(portfolio.sections[0].content[0].children[0].text);
+    console.log(portfolio.sections[1]);
     return (
-        <div>
+        <>
             {portfolio.sections.map((section) => {
                 return (
                     <PortfolioSection key={section._key} section={section} />
                 );
             })}
-        </div>
+        </>
     );
 }
 
@@ -78,20 +84,30 @@ function PortfolioSection({ section }: { section: Section }) {
 }
 
 function PortfolioContentLine({ contentLine }: { contentLine: ContentLine }) {
+    const { style, children } = contentLine;
+
+    const markClassMap: Record<string, string> = {
+        strong: "font-bold",
+        underline: "underline",
+    };
+
+    let Tag: keyof JSX.IntrinsicElements = style === "normal" ? "span" : style;
+
     return (
-        <div>
-            {contentLine.children.map((linePart) => {
-                let className = "";
-                // Slow... and bad
-                if (linePart.marks.includes("strong")) {
-                    className += "font-bold ";
-                } else if (linePart.marks.includes("underline")) {
-                    className += "underline";
+        <div className="flex gap-1">
+            {children.map((linePart) => {
+                let className = linePart.marks
+                    .map((mark) => markClassMap[mark] || "")
+                    .filter(Boolean)
+                    .join(" ");
+                if (Tag in headingStyles) {
+                    className += " " + headingStyles[Tag as HeadingType];
                 }
+
                 return (
-                    <span className={cn(className)} key={linePart._key}>
+                    <Tag key={linePart._key} className={cn(className)}>
                         {linePart.text}
-                    </span>
+                    </Tag>
                 );
             })}
         </div>
