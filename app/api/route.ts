@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function POST(request: NextRequest) {
     // const secret = process.env.REVALIDATE_SECRET;
     // if (reqSecret !== secret) {
     // return new Response("Invalid token", { status: 401 });
