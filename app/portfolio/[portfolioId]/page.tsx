@@ -62,7 +62,7 @@ export default async function Portfolio(props: PortfolioPageProps) {
     if (!portfolio || !portfolio.sections) {
         return;
     }
-
+    console.log(portfolio);
     return portfolio.sections.map((section) => (
         <PortableText key={section._key} value={section.content}></PortableText>
     ));

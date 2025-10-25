@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     // console.log(actionType);
     console.log("Revalidating...");
     revalidatePath("/", "layout");
-    // revalidatePath("/portfolio/[productId]/page", "page");
+    revalidatePath("/portfolio/[productId]", "page");
 
     return NextResponse.json({ success: true });
 }
