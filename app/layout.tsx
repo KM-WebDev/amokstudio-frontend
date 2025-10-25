@@ -4,10 +4,13 @@ import Header from "@/components/base/Header";
 import Main from "@/components/base/Main";
 import Footer from "@/components/base/Footer";
 
+import { VisualEditing } from "next-sanity/visual-editing";
 import NavigationControls from "@/controls/context/NavigationControls";
+import { draftMode } from "next/headers";
+import { SanityLive } from "@/services/sanity/client";
 // import ScrollableArea from "@/components/base/ScrollableArea";
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -22,6 +25,8 @@ export default function RootLayout({
                     <Main>{children}</Main>
                     <Footer />
                 </NavigationControls>
+                <SanityLive />
+                {(await draftMode()).isEnabled && <VisualEditing />}
                 {/* </GlobalControls> */}
             </body>
         </html>

@@ -1,16 +1,15 @@
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-import { setTimeout } from "timers/promises";
 
 export async function POST(request: NextRequest) {
-    // const secret = process.env.REVALIDATE_SECRET;
-    // if (reqSecret !== secret) {
-    // return new Response("Invalid token", { status: 401 });
-    // }
-    // const actionType = request.headers.get("action-type");
-    // console.log(actionType);
-    console.log("Revalidating...");
-    console.log("Revalidated...");
+    const envSecret = process.env.REVALIDATE_SECRET;
+
+    const reqSecret = request.headers.get("x-sanity-secret");
+
+    if (reqSecret !== envSecret) {
+        return new Response("Invalid token", { status: 401 });
+    }
+
     revalidatePath("/", "layout");
     revalidatePath("/portfolio/[productId]", "page");
 

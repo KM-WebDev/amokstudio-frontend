@@ -4,9 +4,7 @@ import {
     PORTFOLIO_IDS_QUERY,
 } from "@/services/sanity/queries";
 import { PortableText } from "@portabletext/react";
-import Header from "@/components/base/Heading";
 import { FilteredResponseQueryOptions } from "next-sanity";
-import { join } from "path";
 
 type ContentLinePartMark = "underline" | "strong";
 type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -67,11 +65,7 @@ export default async function Portfolio(props: PortfolioPageProps) {
     if (!portfolio || !portfolio.sections) {
         return;
     }
-    // console.log(
-    //     portfolio.sections[0].content
-    //         .map((line) => line.children.map((part) => part.text).join(""))
-    //         .join("\n")
-    // );
+
     return portfolio.sections.map((section) => (
         <PortableText key={section._key} value={section.content}></PortableText>
     ));
