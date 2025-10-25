@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 export async function GET(request: Request) {
     // const secret = process.env.REVALIDATE_SECRET;
     // if (reqSecret !== secret) {
@@ -6,6 +8,7 @@ export async function GET(request: Request) {
     console.log(request.headers);
     // const actionType = request.headers.get("action-type");
     // console.log(actionType);
-
+    revalidatePath("/", "layout");
+    revalidatePath("/portfolio/[productId]", "page");
     return new Response(``, { status: 200 });
 }
