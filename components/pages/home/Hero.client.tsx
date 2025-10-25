@@ -1,5 +1,6 @@
 "use client";
 
+import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import { motionValue, MotionValue } from "motion";
 import {
@@ -26,17 +27,13 @@ interface HeroContext {
     scrollRef: RefObject<HTMLDivElement | null>;
 }
 
-interface HeroClientProps {
-    children: ReactNode;
-}
-
 const HeroContext = createContext<HeroContext>({
     scrollEndEnd: motionValue(0),
     scrollStartEnd: motionValue(0),
     scrollRef: { current: null },
 });
 
-export default function HeroClient({ children }: HeroClientProps) {
+export default function HeroClient({ children }: BasicComponentProps) {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     const { scrollYProgress: scrollEndEnd } = useScroll({
@@ -81,20 +78,16 @@ const HeadingVariants = {
     },
 };
 
-interface HeroHeadingContainerProps {
-    children: ReactNode;
-    className: string;
-}
 export function HeroHeadingContainer({
     children,
     className,
-}: HeroHeadingContainerProps) {
-    const { scrollEndEnd, scrollStartEnd } = useContext(HeroContext);
+}: BasicComponentProps) {
+    const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
     const [isVisible, setIsVisible] = useState(true);
 
     useMotionValueEvent(scrollStartEnd, "change", (latest) => {
-        if (latest > 0.2) {
+        if (latest > 0.25) {
             // When scroll passes 20% of section height
             controls.start("hidden");
             setIsVisible(false);
@@ -125,15 +118,10 @@ export function HeroHeadingContainer({
     );
 }
 
-interface HeroBgImgContainer {
-    children: ReactNode;
-    className?: string;
-}
-
 export function HeroBgImgContainer({
     className,
     children,
-}: HeroBgImgContainer) {
+}: BasicComponentProps) {
     const { scrollStartEnd } = useContext(HeroContext);
     const scale = useTransform(scrollStartEnd, [0.1, 0.7], [1, 1.5]);
     const blurBackground = useTransform(scrollStartEnd, [0, 0.5], [15, 0]);
@@ -180,14 +168,10 @@ const SubtitleVariants = {
     },
 };
 
-interface HeroSubtitleContainerProps {
-    children: ReactNode;
-    className?: string;
-}
 export function HeroSubtitleContainer({
     children,
     className,
-}: HeroSubtitleContainerProps) {
+}: BasicComponentProps) {
     const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
     const [isVisible, setIsVisible] = useState(true);
@@ -214,6 +198,43 @@ export function HeroSubtitleContainer({
             animate={controls}
             transition={{ duration: 0.2 }}
             className={cn("", className)}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
+const arrowVariants = {
+    before: {
+        position: "fixed",
+    },
+    after: {
+        position: "absolute",
+    },
+};
+export function HeroScrollArrowsContainer({
+    children,
+    className,
+}: BasicComponentProps) {
+    const { scrollEndEnd } = useContext(HeroContext);
+    const opacity = useTransform(scrollEndEnd, [0.3, 0.7], [1, 0]);
+    const controls = useAnimation();
+
+    useMotionValueEvent(scrollEndEnd, "change", (latest) => {
+        if (latest > 0) {
+            controls.start("after");
+        } else {
+            controls.start("before");
+        }
+    });
+
+    return (
+        <motion.div
+            variants={arrowVariants}
+            initial={"before"}
+            animate={controls}
+            className={className}
+            style={{ opacity }}
         >
             {children}
         </motion.div>

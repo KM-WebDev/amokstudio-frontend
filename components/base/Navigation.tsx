@@ -30,7 +30,7 @@ function GeneratedLinks() {
                     route={route}
                     className="cursor-pointer text-zinc-600 hover:text-gray-900"
                     activeClassName="underline underline-offset-3"
-                    ctaClassName="px-4 py-1.5 max-lg:mt-5 bg-clr-brand-rose w-full flex text-white justify-center rounded-full"
+                    ctaClassName="px-4 py-1.5 max-lg:mt-5 bg-clr-brand-red w-full flex text-white justify-center rounded-full"
                 />
             </li>
         );

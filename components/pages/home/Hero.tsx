@@ -4,8 +4,10 @@ import Image from "next/image";
 import HeroClient, {
     HeroBgImgContainer,
     HeroHeadingContainer,
+    HeroScrollArrowsContainer,
     HeroSubtitleContainer,
 } from "./Hero.client";
+import ScrollArrows from "@/components/ui/ScrollArrows";
 
 export default function Hero() {
     return (
@@ -22,14 +24,15 @@ export default function Hero() {
                 </HeroBgImgContainer>
                 <HeroHeadingContainer
                     className={
-                        "fixed top-[50%] left-[50%] z-10 container w-full -translate-x-[50%] -translate-y-[50%]"
+                        "fixed top-[35%] left-[50%] z-10 container w-full -translate-x-[50%] -translate-y-[50%] lg:top-[50%]"
                     }
                 >
                     <HeroHeading />
-                    <HeroSubtitleContainer>
-                        <span>Elo</span>
-                    </HeroSubtitleContainer>
                 </HeroHeadingContainer>
+                <HeroScrollArrowsContainer className="fixed right-0 bottom-2 z-10 mb-5 flex w-full items-end justify-center gap-5 px-5 text-zinc-500">
+                    <span className="">Zjedz niżej</span>
+                    <ScrollArrows />
+                </HeroScrollArrowsContainer>
             </div>
         </HeroClient>
     );
