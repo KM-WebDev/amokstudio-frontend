@@ -1,17 +1,19 @@
 import { client } from "@/services/sanity/client";
 import { PORTFOLIO_SINGLE_QUERY } from "@/services/sanity/queries";
 
-interface ContentText {
+interface ContentLinePart {
     text: string;
 }
 
-interface Content {
-    children: Array<ContentText>;
+// Represents a SINGLE line in a content block!
+// That line is split into children for styling (one part of the line might be underlined and the other bolded)
+interface ContentLine {
+    children: Array<ContentLinePart>;
 }
 
 interface Section {
     heading: string;
-    content: Array<Content>;
+    content: Array<ContentLine>;
 }
 
 interface Gallery {
