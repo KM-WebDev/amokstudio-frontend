@@ -15,7 +15,6 @@ import * as motion from "motion/react-client";
 
 import {
     createContext,
-    ReactNode,
     RefObject,
     useContext,
     useEffect,
@@ -54,7 +53,10 @@ export default function HeroClient({ children }: BasicComponentProps) {
         <HeroContext.Provider
             value={{ scrollEndEnd, scrollStartEnd, scrollRef }}
         >
-            <div className={cn(isNavOpen && "opacity-0")} ref={scrollRef}>
+            <div
+                className={cn(isNavOpen && "opacity-0", "-z-10")}
+                ref={scrollRef}
+            >
                 {children}
             </div>
         </HeroContext.Provider>
@@ -86,7 +88,7 @@ export function HeroHeadingContainer({
 }: BasicComponentProps) {
     const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
     const { isNavOpen } = useContext(NavigationControlsContext);
     useMotionValueEvent(scrollStartEnd, "change", (latest) => {
         if (latest > 0.25) {
@@ -95,7 +97,7 @@ export function HeroHeadingContainer({
             setIsVisible(false);
         } else {
             if (isNavOpen) return;
-            if (!isVisible && latest < 0.3) {
+            if (!isVisible && latest < 0.26) {
                 controls.start("visible");
             } else {
                 controls.start("visible");
@@ -103,17 +105,20 @@ export function HeroHeadingContainer({
             setIsVisible(true);
         }
     });
-    // const scale = useTransform(scrollEndEnd, [0, 1], [1, 2]);
-    // const style = { scale };
-    const style = {};
+
+    useEffect(() => {
+        if (window.scrollY === 0 && !isVisible) {
+            setIsVisible(true);
+            controls.start("visible");
+        }
+    }, [setIsVisible, controls, isVisible]);
 
     return (
         <motion.div
             variants={HeadingVariants}
-            initial="visible"
+            initial="hidden"
             animate={controls}
             transition={{ duration: 0.2 }}
-            style={style}
             className={cn("will-change-transform", className)}
         >
             {children}
@@ -126,13 +131,14 @@ export function HeroBgImgContainer({
     children,
 }: BasicComponentProps) {
     const { scrollStartEnd } = useContext(HeroContext);
-    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [1, 1.5]);
-    const blurBackground = useTransform(scrollStartEnd, [0, 0.5], [15, 0]);
+    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.7, 1]);
+    const opacity = useTransform(scrollStartEnd, [0.95, 1], [1, 0]);
+    const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [15, 0]);
     const backdropFilter = useMotionTemplate`blur(${blurBackground}px)`;
     const top = useTransform(
         scrollStartEnd,
-        [0.5, 0.7, 0.9, 1],
-        ["50%", "15%", "15%", "-10%"]
+        [0.5, 0.9, 0.99, 1],
+        ["50%", "15%", "0%", "-10%"]
     );
 
     return (
@@ -144,7 +150,7 @@ export function HeroBgImgContainer({
 
             <motion.div
                 className="absolute right-0 left-0 h-full w-full translate-y-[-50%] will-change-transform"
-                style={{ scale, top }}
+                style={{ scale, top, opacity }}
             >
                 {children}
             </motion.div>
@@ -155,18 +161,14 @@ export function HeroBgImgContainer({
 const SubtitleVariants = {
     hidden: {
         opacity: 0,
-        y: -30,
-        filter: "blur(10px) brightness(0%)",
         transition: {
-            duration: 0.3,
+            duration: 0.1,
         },
     },
     visible: {
         opacity: 1,
-        y: 0,
-        filter: "0",
         transition: {
-            duration: 0.2,
+            duration: 0.3,
         },
     },
 };
@@ -177,20 +179,19 @@ export function HeroSubtitleContainer({
 }: BasicComponentProps) {
     const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
+    // const top = useTransform(scrollStartEnd, [0.9, 0.95], ["22%", "5%"]);
 
     useMotionValueEvent(scrollStartEnd, "change", (latest) => {
         console.log(latest);
-        if (latest < 0.8) {
+        if (latest < 0.7 || latest > 0.88) {
             controls.start("hidden");
             setIsVisible(false);
         } else {
-            if (!isVisible && latest > 0.85) {
+            if (!isVisible && latest > 0.7) {
                 controls.start("visible");
-            } else {
-                controls.start("visible");
+                setIsVisible(true);
             }
-            setIsVisible(true);
         }
     });
 
@@ -199,7 +200,8 @@ export function HeroSubtitleContainer({
             variants={SubtitleVariants}
             initial="hidden"
             animate={controls}
-            transition={{ duration: 0.2 }}
+            // style={{ top }}
+            transition={{ duration: 0.1 }}
             className={cn("will-change-transform", className)}
         >
             {children}
