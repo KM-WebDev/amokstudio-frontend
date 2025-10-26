@@ -14,12 +14,9 @@ export default function Header() {
                         <div className="flex items-center justify-between gap-15">
                             <Link
                                 href="/"
-                                className="relative h-[25px] w-[175px] overflow-hidden"
+                                className="flex items-center justify-center"
                             >
-                                <Logo
-                                    type="red"
-                                    className="relative scale-175 object-cover"
-                                />
+                                <Logo type="red" width={125} height={0} />
                             </Link>
                             <Navigation />
                         </div>

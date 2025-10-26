@@ -15,6 +15,7 @@ import * as motion from "motion/react-client";
 
 import {
     createContext,
+    ReactNode,
     RefObject,
     useContext,
     useEffect,
@@ -126,10 +127,14 @@ export function HeroHeadingContainer({
     );
 }
 
+interface HeroBgImgContainer extends BasicComponentProps {
+    particles: ReactNode;
+}
 export function HeroBgImgContainer({
     className,
     children,
-}: BasicComponentProps) {
+    particles,
+}: HeroBgImgContainer) {
     const { scrollStartEnd } = useContext(HeroContext);
     const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.7, 1]);
     const opacity = useTransform(scrollStartEnd, [0.95, 1], [1, 0]);
@@ -147,7 +152,7 @@ export function HeroBgImgContainer({
                 className="pointer-events-none absolute inset-0 z-20 w-full will-change-transform"
                 style={{ backdropFilter }}
             />
-
+            {particles}
             <motion.div
                 className="absolute right-0 left-0 h-full w-full translate-y-[-50%] will-change-transform"
                 style={{ scale, top, opacity }}
