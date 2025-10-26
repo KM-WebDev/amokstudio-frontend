@@ -1,15 +1,16 @@
 import { cn } from "@/lib/utils/cn";
 import { sanityFetch } from "@/services/sanity/client";
 import { SOCIALS_QUERY } from "@/services/sanity/queries";
-// import { FaFacebookSquare } from "react-icons/fa";
-// import { FaInstagramSquare } from "react-icons/fa";
-// import { FaSquareXTwitter } from "react-icons/fa6";
-// import { FaLinkedin } from "react-icons/fa6";
 import Image from "next/image";
 
 interface SocialProps {
     link: string;
     children: React.ReactNode;
+}
+
+interface BrandIconProps {
+    className: string;
+    brand: string;
 }
 
 type SocialData = {
@@ -32,7 +33,7 @@ export default async function Socials({ className }: { className?: string }) {
 
     const socialData: SocialData[] = data;
     const allSocials: string[] = socialData.flatMap((data) => data.socials);
-    console.log(allSocials);
+
     const classNameIcon =
         "hover:text-clr-brand-red transition-colors duration-200";
 
@@ -40,35 +41,14 @@ export default async function Socials({ className }: { className?: string }) {
         <div className={cn("flex gap-2", className)}>
             {allSocials.map((social, i) => (
                 <SocialButton key={i} link={social}>
-                    <Image
+                    <BrandIcon
                         className={classNameIcon}
-                        alt={""}
-                        src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${getBrandFromUrl(social)}.svg`}
-                        width={20}
-                        height={20}
+                        brand={getBrandFromUrl(social)}
                     />
-                    {/* <FaFacebookSquare className={classNameIcon} /> */}
                 </SocialButton>
             ))}
         </div>
     );
-
-    // return (
-    //     <div className={cn("flex gap-2", className)}>
-    //         <SocialButton link="https://facebook.com">
-    //             <FaFacebookSquare className={classNameIcon} />
-    //         </SocialButton>
-    //         <SocialButton link="https://instagram.com">
-    //             <FaInstagramSquare className={classNameIcon} />
-    //         </SocialButton>
-    //         <SocialButton link="https://x.com">
-    //             <FaSquareXTwitter className={classNameIcon} />
-    //         </SocialButton>
-    //         <SocialButton link="https://linkedin.com">
-    //             <FaLinkedin className={classNameIcon} />
-    //         </SocialButton>
-    //     </div>
-    // );
 }
 
 function getBrandFromUrl(url: string) {
@@ -76,7 +56,21 @@ function getBrandFromUrl(url: string) {
         const { hostname } = new URL(url);
         return hostname.replace("www.", "").split(".")[0];
     } catch (e) {
-        console.log(`"${url}" is not a valid url`);
         return "";
     }
+}
+
+function BrandIcon({ className, brand }: BrandIconProps) {
+    return (
+        <Image
+            className={className}
+            alt={`Link to ${brand}`}
+            onError={() => {
+                console.error(`Could not load icon for brand "${brand}".`);
+            }}
+            src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
+            width={20}
+            height={20}
+        />
+    );
 }
