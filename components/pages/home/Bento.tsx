@@ -1,5 +1,4 @@
 import Section from "@/components/base/Section";
-import AnimatedContent from "@/components/thirdparty/reactbits/AnimatedContent";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
@@ -12,12 +11,12 @@ export default function Bento() {
                     <h2 className="text-clr-brand-red text-center text-base/7 font-semibold">
                         Moje usługi
                     </h2>
-                    <p className="mx-auto mt-2 max-w-xl text-center text-4xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-5xl">
+                    <p className="mx-auto max-w-xl text-center text-4xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-5xl">
                         Wszystko co potrzebujesz związane z designem
                     </p>
                 </div>
 
-                <div className="relative mt-10 grid items-stretch gap-6 max-lg:container lg:grid-cols-3 lg:gap-4">
+                <div className="relative grid items-stretch gap-6 max-lg:container lg:grid-cols-3 lg:gap-4">
                     <Left className="lg:col-start-1 lg:row-span-5" />
                     <Top className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
                     <Bottom className="lg:col-start-2 lg:row-span-3 lg:row-start-3" />

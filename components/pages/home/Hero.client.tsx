@@ -15,6 +15,7 @@ import * as motion from "motion/react-client";
 
 import {
     createContext,
+    ReactNode,
     RefObject,
     useContext,
     useEffect,
@@ -54,8 +55,11 @@ export default function HeroClient({ children }: BasicComponentProps) {
             value={{ scrollEndEnd, scrollStartEnd, scrollRef }}
         >
             <div
-                className={cn(isNavOpen && "opacity-0", "-z-10")}
+                className={cn("pointer-events-none -z-1000")}
                 ref={scrollRef}
+                style={{
+                    opacity: isNavOpen ? 0 : 1,
+                }}
             >
                 {children}
             </div>
@@ -89,6 +93,7 @@ export function HeroHeadingContainer({
     const { scrollStartEnd } = useContext(HeroContext);
     const controls = useAnimation();
     const [isVisible, setIsVisible] = useState(false);
+
     const { isNavOpen } = useContext(NavigationControlsContext);
     useMotionValueEvent(scrollStartEnd, "change", (latest) => {
         if (latest > 0.25) {
@@ -126,25 +131,28 @@ export function HeroHeadingContainer({
     );
 }
 
+interface HeroBgImgContainer extends BasicComponentProps {
+    particles?: ReactNode;
+}
 export function HeroBgImgContainer({
     className,
     children,
-}: BasicComponentProps) {
+}: HeroBgImgContainer) {
     const { scrollStartEnd } = useContext(HeroContext);
-    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.7, 1]);
-    const opacity = useTransform(scrollStartEnd, [0.95, 1], [1, 0]);
-    const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [15, 0]);
+    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.5, 1]);
+    const opacity = useTransform(scrollStartEnd, [0.9, 0.95], [1, 0]);
+    const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [8, 0]);
     const backdropFilter = useMotionTemplate`blur(${blurBackground}px)`;
     const top = useTransform(
         scrollStartEnd,
-        [0.5, 0.9, 0.99, 1],
+        [0.5, 0.8, 0.95, 1],
         ["50%", "15%", "0%", "-10%"]
     );
 
     return (
         <div className={cn("", className)}>
             <motion.div
-                className="pointer-events-none absolute inset-0 z-20 w-full will-change-transform"
+                className="pointer-events-none absolute inset-0 z-100 w-full will-change-transform"
                 style={{ backdropFilter }}
             />
 

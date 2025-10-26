@@ -8,8 +8,8 @@ export default function AppUtilities() {
             <ReactLenis
                 options={{
                     duration: 1.5, // scroll duration
-                    lerp: 0.1, // interpolation factor
-                    touchMultiplier: 1, // speed of touch scroll
+                    lerp: 0.5, // interpolation factor
+                    touchMultiplier: 0.7, // speed of touch scroll
                 }}
             />
             <Analytics />

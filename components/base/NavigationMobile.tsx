@@ -2,7 +2,6 @@
 
 import { ReactNode, useContext, useEffect } from "react";
 import { NavigationControlsContext } from "../../controls/context/NavigationControls";
-import { createPortal } from "react-dom";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils/cn";
 import Hamburger from "hamburger-react";
@@ -16,9 +15,7 @@ export default function NavigationMobile({
     generatedLinks,
     className,
 }: NavigationMobileProps) {
-    const { isNavOpen, closeNav, scrollRef } = useContext(
-        NavigationControlsContext
-    );
+    const { isNavOpen, scrollRef } = useContext(NavigationControlsContext);
 
     const navVariants = {
         hidden: { y: "-25%", opacity: 0 },
@@ -46,8 +43,6 @@ export default function NavigationMobile({
                 className
             )}
         >
-            {isNavOpen &&
-                createPortal(<Overlay onClick={closeNav} />, document.body)}
             <motion.nav
                 initial={false}
                 animate={isNavOpen ? "visible" : "hidden"}
@@ -64,15 +59,6 @@ export default function NavigationMobile({
                 </ul>
             </motion.nav>
         </div>
-    );
-}
-
-function Overlay({ onClick }: { onClick: () => void }) {
-    return (
-        <div
-            className="bg-clr-brand-red/30 fixed inset-0 backdrop-blur-xs lg:hidden"
-            onClick={onClick}
-        />
     );
 }
 
