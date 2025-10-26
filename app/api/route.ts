@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     if (reqSecret !== envSecret) {
         return new Response("Invalid token", { status: 401 });
     }
-    console.log(request.headers);
+    console.log(await request.json());
 
     revalidatePath("/", "layout");
     // This might actually not do anything
