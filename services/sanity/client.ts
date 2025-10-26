@@ -16,6 +16,6 @@ export const { sanityFetch, SanityLive } = defineLive({
     serverToken: apiReadToken,
     browserToken: apiReadToken,
     fetchOptions: {
-        revalidate: false,
+        revalidate: process.env.NODE_ENV === "development" ? 5 : false,
     },
 });

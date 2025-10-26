@@ -11,5 +11,9 @@ export const PORTFOLIO_SINGLE_QUERY =
 }`);
 
 export const PORTFOLIO_IDS_QUERY = defineQuery(`*[_type == "portfolio"]{
-        _id
+    _id
+}`);
+
+export const SOCIALS_QUERY = defineQuery(`*[_type == "contactInfo"]{
+    _id, socials
 }`);
