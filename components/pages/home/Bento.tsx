@@ -1,5 +1,4 @@
 import Section from "@/components/base/Section";
-import AnimatedContent from "@/components/thirdparty/reactbits/AnimatedContent";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";

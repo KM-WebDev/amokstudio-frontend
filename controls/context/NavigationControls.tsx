@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils/cn";
 import {
     createContext,
     RefObject,
@@ -60,7 +61,33 @@ export default function NavigationControls({ children }: Props) {
 
     return (
         <NavigationControlsContext value={value}>
+            <Overlay onClick={closeNav} isOpen={isNavOpen} />
+
             {children}
         </NavigationControlsContext>
+    );
+}
+function Overlay({
+    onClick,
+    isOpen,
+}: {
+    onClick: () => void;
+    isOpen: boolean;
+}) {
+    return (
+        <div
+            className={cn(
+                "fixed inset-0 z-10000 bg-zinc-300/70 backdrop-blur-md lg:hidden"
+            )}
+            style={{
+                visibility: isOpen ? "visible" : "hidden",
+                pointerEvents: isOpen ? "auto" : "none",
+                opacity: isOpen ? "1" : "0",
+                zIndex: isOpen ? "10000" : "-10",
+                display: isOpen ? "block" : "hidden",
+                transition: "opacity 0.3s",
+            }}
+            onClick={onClick}
+        />
     );
 }

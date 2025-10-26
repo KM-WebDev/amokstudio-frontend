@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { CSSProperties, useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 
 interface ParticlesProps {
@@ -14,6 +14,7 @@ interface ParticlesProps {
     cameraDistance?: number;
     disableRotation?: boolean;
     className?: string;
+    style: CSSProperties;
 }
 
 const defaultColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
@@ -112,6 +113,7 @@ const Particles: React.FC<ParticlesProps> = ({
     cameraDistance = 20,
     disableRotation = false,
     className,
+    style,
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -259,6 +261,7 @@ const Particles: React.FC<ParticlesProps> = ({
     return (
         <div
             ref={containerRef}
+            style={style}
             className={`relative h-full w-full ${className}`}
         />
     );

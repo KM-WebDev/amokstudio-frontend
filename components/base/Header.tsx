@@ -8,8 +8,8 @@ import Logo from "../Logo";
 export default function Header() {
     return (
         <header className="fixed top-0 right-0 left-0 z-10000 shadow">
-            <HeaderContainer>
-                <div className="relative z-100000 flex h-full w-full items-center justify-center bg-zinc-100/60 backdrop-blur-md">
+            <HeaderContainer className="h-full w-full bg-zinc-100/60 backdrop-blur-md">
+                <div className="relative z-100000 flex h-full w-full items-center justify-center">
                     <div className="flex h-full w-full max-w-[1200px] items-center justify-between px-6 py-2 lg:py-2">
                         <div className="flex items-center justify-between gap-15">
                             <Link

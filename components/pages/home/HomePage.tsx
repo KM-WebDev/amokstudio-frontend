@@ -9,6 +9,7 @@ export default async function HomePage() {
             <Hero />
             <PageContent>
                 <Bento />
+                <div className="h-[1000px]"></div>
                 <Logo />
             </PageContent>
         </>
