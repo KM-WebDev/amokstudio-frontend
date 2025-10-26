@@ -65,9 +65,6 @@ function BrandIcon({ className, brand }: BrandIconProps) {
         <Image
             className={className}
             alt={`Link to ${brand}`}
-            onError={() => {
-                console.error(`Could not load icon for brand "${brand}".`);
-            }}
             src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
             width={20}
             height={20}
