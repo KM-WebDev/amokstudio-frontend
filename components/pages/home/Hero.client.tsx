@@ -136,13 +136,13 @@ export function HeroBgImgContainer({
     particles,
 }: HeroBgImgContainer) {
     const { scrollStartEnd } = useContext(HeroContext);
-    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.7, 1]);
+    const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.5, 1]);
     const opacity = useTransform(scrollStartEnd, [0.95, 1], [1, 0]);
-    const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [15, 0]);
+    const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [8, 0]);
     const backdropFilter = useMotionTemplate`blur(${blurBackground}px)`;
     const top = useTransform(
         scrollStartEnd,
-        [0.5, 0.9, 0.99, 1],
+        [0.5, 0.85, 0.99, 1],
         ["50%", "15%", "0%", "-10%"]
     );
 

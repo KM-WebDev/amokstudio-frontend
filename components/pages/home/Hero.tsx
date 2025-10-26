@@ -14,30 +14,28 @@ export default function Hero() {
     return (
         <HeroClient>
             <div className="relative -z-100">
-                <div className="pointer-events-none h-[250vh] overflow-hidden md:h-[300vh]">
-                    {" "}
-                </div>
+                <div className="pointer-events-none h-[200vh] overflow-hidden md:h-[300vh]" />
                 <HeroBgImgContainer
                     particles={
                         <Particles
                             particleColors={["#fec7da", "#ca010b"]}
-                            particleCount={300}
-                            particleSpread={15}
+                            particleCount={100}
+                            particleSpread={5}
                             speed={0.1}
-                            particleBaseSize={500}
+                            particleBaseSize={350}
                             moveParticlesOnHover={true}
-                            alphaParticles={true}
+                            alphaParticles={false}
                             disableRotation={false}
-                            className="absolute inset-0 z-[100000000] blur-xs"
+                            className="absolute inset-0 blur-xs"
                         />
                     }
                     className="fixed top-0 right-0 left-0 flex h-screen w-full items-center justify-center"
                 >
                     <Image
-                        src={"/amokstudio-red.svg"}
+                        src={"/logo-red.svg"}
                         fill
                         sizes="100vw"
-                        className="h-full w-full object-contain"
+                        className="relative h-full object-contain px-5 pb-5 lg:px-25"
                         alt="logo"
                     />
                 </HeroBgImgContainer>
