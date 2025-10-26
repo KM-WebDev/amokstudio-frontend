@@ -21,7 +21,7 @@ export default function NavigationMobile({
     );
 
     const navVariants = {
-        hidden: { y: "-150%", opacity: 1 },
+        hidden: { y: "-25%", opacity: 0 },
         visible: { y: 0, opacity: 1 },
     };
 
@@ -52,10 +52,11 @@ export default function NavigationMobile({
                 initial={false}
                 animate={isNavOpen ? "visible" : "hidden"}
                 variants={navVariants}
-                transition={{ type: "tween", duration: 0.2 }}
+                transition={{ type: "tween", duration: 0.3 }}
                 className={cn(
                     // Phone
-                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-2000 will-change-transform"
+                    "rounded-x pointer-events-auto m-5 flex w-full translate-y-0 rounded-4xl bg-white px-10 py-10 shadow-xl transition-[translate] duration-2000 will-change-transform",
+                    isNavOpen ? "flex" : "hidden"
                 )}
             >
                 <ul className="flex w-full flex-col gap-4 text-lg capitalize">

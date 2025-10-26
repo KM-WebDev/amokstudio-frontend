@@ -8,23 +8,25 @@ import HeroClient, {
     HeroSubtitleContainer,
 } from "./Hero.client";
 import ScrollArrows from "@/components/ui/ScrollArrows";
+import CurvedLoop from "@/components/thirdparty/reactbits/CurvedLoop";
 
 export default function Hero() {
     return (
         <HeroClient>
             <div className="relative -z-100">
-                <div className="h-[300vh] overflow-hidden md:h-[400vh]"></div>
+                <div className="pointer-events-none h-[250vh] overflow-hidden md:h-[400vh]"></div>
                 <HeroBgImgContainer className="fixed top-0 right-0 left-0 flex h-screen w-full items-center justify-center">
                     <Image
                         src={"/amokstudio-red.svg"}
                         fill
+                        sizes="100vw"
                         className="h-full w-full object-contain"
                         alt="logo"
                     />
                 </HeroBgImgContainer>
                 <HeroHeadingContainer
                     className={
-                        "fixed top-[35%] left-[50%] z-10 container w-full -translate-x-[50%] -translate-y-[50%] lg:top-[50%]"
+                        "fixed top-[30%] left-[50%] z-10 container w-full -translate-x-[50%] -translate-y-[50%] lg:top-[50%]"
                     }
                 >
                     <HeroHeading />
@@ -33,6 +35,16 @@ export default function Hero() {
                     <span className="">Zjedz niżej</span>
                     <ScrollArrows />
                 </HeroScrollArrowsContainer>
+                {/* <HeroSubtitleContainer className="fixed top-[0%] right-0 left-[50%] mb-5 flex h-[40%] w-full translate-x-[-50%] flex-col items-center justify-center gap-2 text-sm text-zinc-700">
+                    <CurvedLoop
+                        marqueeText="Branding ✦ Komunikacja wizualna ✦ Znakowanie odzieży  ✦ Reklama ✦"
+                        speed={0.5}
+                        curveAmount={300}
+                        direction="right"
+                        interactive={false}
+                        className="custom-text-style fill-clr-brand-rose"
+                    />
+                </HeroSubtitleContainer> */}
             </div>
         </HeroClient>
     );
@@ -40,18 +52,9 @@ export default function Hero() {
 
 function HeroHeading() {
     return (
-        <h1 className="flex flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
-            <TextEffect per="char" delay={0} preset="blur">
-                Reklama
-            </TextEffect>
-            <TextEffect per="char" delay={0.25} preset="blur">
-                Branding
-            </TextEffect>
+        <h1 className="pointer-events-auto z-1000 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0.5} preset="blur">
-                Znakowanie odzieży
-            </TextEffect>
-            <TextEffect per="char" delay={1} preset="blur">
-                Komunikacja wizualna
+                Kreatywne studio designu w Trójmieście
             </TextEffect>
         </h1>
     );
