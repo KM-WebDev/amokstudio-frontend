@@ -8,11 +8,13 @@ export async function POST(request: NextRequest) {
     if (reqSecret !== envSecret) {
         return new Response("Invalid token", { status: 401 });
     }
-    console.log(await request.json());
+    const { _id, _type } = await request.json();
 
-    revalidatePath("/", "layout");
-    // This might actually not do anything
-    revalidatePath("/portfolio/[productId]", "page");
+    if (_type === "portfolio") {
+        revalidatePath(`/portfolio/${_id}`, "page");
+    } else {
+        revalidatePath("/", "layout");
+    }
 
     return NextResponse.json({ success: true });
 }
