@@ -13,8 +13,10 @@ export async function POST(request: NextRequest) {
     console.log(body);
     if (body._type === "portfolio") {
         revalidatePath(`/portfolio/${body._id}`, "page");
+        console.log("THIS ONE");
     } else {
         revalidatePath("/", "layout");
+        console.log("THIS TWO");
     }
 
     return NextResponse.json({ success: true });
