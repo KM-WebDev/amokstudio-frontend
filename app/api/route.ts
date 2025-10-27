@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
     if (reqSecret !== envSecret) {
         return new Response("Invalid token", { status: 401 });
     }
+    
     revalidatePath(`/portfolio/[portfolioId]`, "page");
     revalidatePath("/", "layout");
 
