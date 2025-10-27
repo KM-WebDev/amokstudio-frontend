@@ -60,7 +60,7 @@ function HeroHeading() {
     return (
         <h1 className="pointer-events-auto z-1000 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0.5} preset="blur">
-                Kreatywne studio desadfassignu w Trójmieście
+                Kreatywne studio designu w Trójmieście
             </TextEffect>
         </h1>
     );
