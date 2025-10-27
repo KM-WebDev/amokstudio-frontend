@@ -46,7 +46,7 @@ export default function HeroMobile({ className }: BasicComponentProps) {
 
 function HeroHeading() {
     return (
-        <h1 className="pointer-events-auto flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold max-lg:order-1 lg:gap-3 lg:text-7xl">
+        <h1 className="pointer-events-auto flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold max-lg:order-1 max-lg:text-center lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={1} preset="blur">
                 Kreatywne studio designu w Trójmieście
             </TextEffect>
