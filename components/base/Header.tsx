@@ -16,7 +16,7 @@ export default function Header() {
                                 href="/"
                                 className="flex items-center justify-center"
                             >
-                                <Logo type="red" width={125} height={0} />
+                                <Logo type="red" width={125} height={30} />
                             </Link>
                             <Navigation />
                         </div>
