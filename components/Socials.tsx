@@ -64,7 +64,7 @@ function BrandIcon({ className, brand }: BrandIconProps) {
     return (
         <Image
             className={className}
-            alt={`Link to ${brand}`}
+            alt={brand}
             src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
             width={20}
             height={20}
