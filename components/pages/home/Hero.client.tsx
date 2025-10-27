@@ -35,7 +35,10 @@ const HeroContext = createContext<HeroContext>({
     scrollRef: { current: null },
 });
 
-export default function HeroClient({ children }: BasicComponentProps) {
+export default function HeroClient({
+    children,
+    className,
+}: BasicComponentProps) {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     const { scrollYProgress: scrollEndEnd } = useScroll({
@@ -55,7 +58,7 @@ export default function HeroClient({ children }: BasicComponentProps) {
             value={{ scrollEndEnd, scrollStartEnd, scrollRef }}
         >
             <div
-                className={cn("pointer-events-none -z-1000")}
+                className={cn("pointer-events-none -z-1000", className)}
                 ref={scrollRef}
                 style={{
                     opacity: isNavOpen ? 0 : 1,
@@ -140,7 +143,7 @@ export function HeroBgImgContainer({
 }: HeroBgImgContainer) {
     const { scrollStartEnd } = useContext(HeroContext);
     const scale = useTransform(scrollStartEnd, [0.1, 0.7], [0.5, 1]);
-    const opacity = useTransform(scrollStartEnd, [0.9, 0.95], [1, 0]);
+    const opacity = useTransform(scrollStartEnd, [0.95, 0.98], [1, 0]);
     const blurBackground = useTransform(scrollStartEnd, [0, 0.6], [8, 0]);
     const backdropFilter = useMotionTemplate`blur(${blurBackground}px)`;
     const top = useTransform(
