@@ -1,3 +1,3 @@
-export default function notFound() {
-    return <span>elo</span>;
+export default function NotFound() {
+    return <span className="block h-screen w-screen bg-black">elo</span>;
 }

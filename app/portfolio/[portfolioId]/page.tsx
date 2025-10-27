@@ -67,7 +67,7 @@ export default async function Portfolio(props: PortfolioPageProps) {
     }
 
     return portfolio.sections.map((section) => (
-        <PortableText key={section._key} value={section.content}></PortableText>
+        <PortableText key={section._key} value={section.content} />
     ));
 }
 
