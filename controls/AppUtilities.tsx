@@ -1,8 +1,11 @@
 import ReactLenis from "lenis/react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SanityLive } from "@/services/sanity/client";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 
-export default function AppUtilities() {
+export default async function AppUtilities() {
     return (
         <>
             <ReactLenis
@@ -14,6 +17,8 @@ export default function AppUtilities() {
             />
             <Analytics />
             <SpeedInsights />
+            <SanityLive />
+            {(await draftMode()).isEnabled && <VisualEditing />}
         </>
     );
 }

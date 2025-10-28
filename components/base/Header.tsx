@@ -4,7 +4,6 @@ import Navigation from "./Navigation";
 import { HeaderContainer } from "./Header.client";
 import { NavigationToggleButton } from "./NavigationMobile";
 import Logo from "../Logo";
-import { HTMLAttributes } from "react";
 
 export default function Header({ socials }: { socials: string[] }) {
     return (

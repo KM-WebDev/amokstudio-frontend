@@ -1,17 +1,18 @@
 import { routes } from "@/app/routes";
-import { HTMLAttributes } from "react";
 
 import Link from "next/link";
 import NavLink from "./NavLink";
 import SectionHeading from "./SectionHeading";
+import { BasicComponentProps } from "@/lib/types/global";
+import Socials from "../Socials";
 
-export default function Footer({
-    children,
-    socials,
-    ...props
-}: HTMLAttributes<HTMLElement>) {
+interface SocialFooterProps extends BasicComponentProps {
+    socials: string[];
+}
+
+export default function Footer({ socials }: SocialFooterProps) {
     return (
-        <footer {...props}>
+        <footer>
             <div className="bg-zinc-200 py-10 text-zinc-800">
                 <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 text-center">
                     <SectionHeading
@@ -53,14 +54,15 @@ export default function Footer({
                             <span>Warszawa, Polska</span>
                         </div>
                         <div className="flex gap-4 text-xl text-zinc-700">
-                            {children}
+                            <Socials socials={socials} className=""></Socials>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col items-center gap-2 border-t border-zinc-300 px-6 py-4 text-sm text-zinc-500 md:flex-row">
                     <p className="flex-1 text-center">
-                        © 2025 Jan Kowalski. Wszelkie prawa zastrzeżone.
+                        &copy; {new Date().getFullYear()} Anastazja Mokwa.
+                        Wszelkie prawa zastrzeżone.
                     </p>
                     <p className="w-full text-center md:w-auto md:text-right">
                         Strona wykonana przez{" "}

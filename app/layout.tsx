@@ -4,10 +4,7 @@ import Header from "@/components/base/Header";
 import Main from "@/components/base/Main";
 import Footer from "@/components/base/Footer";
 
-import { VisualEditing } from "next-sanity/visual-editing";
 import NavigationControls from "@/controls/context/NavigationControls";
-import { draftMode } from "next/headers";
-import { SanityLive } from "@/services/sanity/client";
 import { fetchAllSocials } from "@/services/sanity/fetch";
 // import ScrollableArea from "@/components/base/ScrollableArea";
 
@@ -31,10 +28,9 @@ export default async function RootLayout({
                 <NavigationControls>
                     <Header socials={socials} />
                     <Main>{children}</Main>
-                    <Footer>{socials}</Footer>
+                    <Footer socials={socials} />
                 </NavigationControls>
-                <SanityLive />
-                {(await draftMode()).isEnabled && <VisualEditing />}
+
                 {/* </GlobalControls> */}
                 <AppUtilities />
             </body>

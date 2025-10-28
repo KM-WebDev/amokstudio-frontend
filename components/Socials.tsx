@@ -1,8 +1,4 @@
 import { cn } from "@/lib/utils/cn";
-import { sanityFetch } from "@/services/sanity/client";
-import { SOCIALS_QUERY } from "@/services/sanity/queries";
-import Image from "next/image";
-import { HTMLAttributes } from "react";
 
 interface SocialProps {
     className: string;
@@ -15,8 +11,19 @@ interface SocialButtonProps {
 }
 
 interface BrandIconProps {
-    className: string;
     brand: string;
+}
+
+export default async function Socials({ socials, className }: SocialProps) {
+    return (
+        <div className={cn("flex gap-2", className)}>
+            {socials.map((social, i) => (
+                <SocialButton key={i} link={social}>
+                    <BrandIcon brand={getBrandFromUrl(social)} />
+                </SocialButton>
+            ))}
+        </div>
+    );
 }
 
 function SocialButton({ link, children }: SocialButtonProps) {
@@ -27,22 +34,29 @@ function SocialButton({ link, children }: SocialButtonProps) {
     );
 }
 
-export default async function Socials({ socials, className }: SocialProps) {
-    const classNameIcon =
-        "hover:text-clr-brand-red transition-colors duration-200";
-
+function BrandIcon({ brand }: BrandIconProps) {
     return (
-        <div className={cn("flex gap-2", className)}>
-            {socials.map((social, i) => (
-                <SocialButton key={i} link={social}>
-                    <BrandIcon
-                        className={classNameIcon}
-                        brand={getBrandFromUrl(social)}
-                    />
-                </SocialButton>
-            ))}
+        <div className="hover:text-clr-brand-red transition-colors duration-200">
+            <div
+                className="h-[20] w-[20]"
+                style={{
+                    WebkitMaskImage: `url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg)`,
+                    maskImage: `url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg)`,
+                    background: "currentcolor",
+                    backgroundSize: "cover",
+                }}
+            ></div>
         </div>
     );
+    // return (
+    //     <Image
+    //         className={className}
+    //         alt={brand}
+    //         src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
+    //         width={20}
+    //         height={20}
+    //     />
+    // );
 }
 
 function getBrandFromUrl(url: string) {
@@ -52,16 +66,4 @@ function getBrandFromUrl(url: string) {
     } catch (e) {
         return "";
     }
-}
-
-function BrandIcon({ className, brand }: BrandIconProps) {
-    return (
-        <Image
-            className={className}
-            alt={brand}
-            src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
-            width={20}
-            height={20}
-        />
-    );
 }
