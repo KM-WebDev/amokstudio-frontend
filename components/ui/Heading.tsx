@@ -1,16 +1,7 @@
 import { cn } from "@/lib/utils/cn";
+export type Heading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-type Heading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-
-interface HeadingProps {
-    styling?: Heading;
-    semantic?: Heading;
-    children?: string;
-    text?: string;
-    className?: string;
-}
-
-export const headingStyles = {
+const headingStyles = {
     h1: cn(
         "text-3xl font-bold",
         "xs:text-3xl",
@@ -55,25 +46,26 @@ export const headingStyles = {
     ),
 };
 
+interface HeadingProps {
+    styling?: Heading;
+    semantic?: Heading;
+    children: string;
+    className?: string;
+}
+
 export default function Heading({
     children,
     styling,
     semantic,
     className,
-    text,
 }: HeadingProps) {
     const Tag = semantic ? semantic : "p";
     const styleTarget = styling ? styling : semantic;
     return (
         <Tag
-            className={cn(
-                "text-clr-text-strong",
-                styleTarget && headingStyles[styleTarget],
-                className
-            )}
+            className={cn(styleTarget && headingStyles[styleTarget], className)}
         >
             {children}
-            {text}
         </Tag>
     );
 }

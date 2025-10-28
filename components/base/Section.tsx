@@ -59,7 +59,7 @@ export default function Section({
     children,
     className,
     padded = ["top", "bottom"],
-    paddingSize = "lg",
+    paddingSize = "md",
 }: SectionProps) {
     return (
         <section
