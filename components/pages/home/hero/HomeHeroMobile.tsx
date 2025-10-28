@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils/cn";
 import Particles from "@/components/thirdparty/reactbits/Particles";
 import { BasicComponentProps } from "@/lib/types/global";
 
-export default function HeroMobile({ className }: BasicComponentProps) {
+export default function HomeHeroMobile({ className }: BasicComponentProps) {
     return (
         <div
             className={cn(

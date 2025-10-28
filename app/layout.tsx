@@ -17,6 +17,12 @@ export default async function RootLayout({
 }>) {
     return (
         <html lang="pl">
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://use.typekit.net/kgi1rtg.css"
+                ></link>
+            </head>
             <body className="overscroll-none">
                 {/* <GlobalControls> */}
                 <NavigationControls>

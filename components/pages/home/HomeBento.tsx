@@ -1,9 +1,10 @@
 import Section from "@/components/base/Section";
+import Button from "@/components/ui/Button";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 
-export default function Bento() {
+export default function HomeBento() {
     return (
         <Section className="bg-zinc-200">
             <Section.Content className="flex flex-col items-center">
@@ -15,15 +16,21 @@ export default function Bento() {
                         Wszystko co potrzebujesz związane z designem
                     </p>
                 </div>
-
-                <div className="relative grid items-stretch gap-6 max-lg:container lg:grid-cols-3 lg:gap-4">
-                    <Left className="lg:col-start-1 lg:row-span-5" />
-                    <Top className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
-                    <Bottom className="lg:col-start-2 lg:row-span-3 lg:row-start-3" />
-                    <Right className="lg:col-start-3 lg:row-span-5 lg:row-start-1" />
-                </div>
+                <Grid />
+                <Button text="Zobacz" />
             </Section.Content>
         </Section>
+    );
+}
+
+function Grid() {
+    return (
+        <div className="relative grid items-stretch gap-6 max-lg:container lg:grid-cols-3 lg:gap-4">
+            <Left className="lg:col-start-1 lg:row-span-5" />
+            <Top className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
+            <Bottom className="lg:col-start-2 lg:row-span-3 lg:row-start-3" />
+            <Right className="lg:col-start-3 lg:row-span-5 lg:row-start-1" />
+        </div>
     );
 }
 

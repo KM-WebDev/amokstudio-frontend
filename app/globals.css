@@ -12,13 +12,24 @@
     --color-foreground: var(--foreground);
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
-    --breakpoint-xs: 25rem;
+    --breakpoint-xs: 25rem; /* 400px */
+
     --color-clr-brand-rose: oklch(0.8835 0.0668 355.93);
     --color-clr-brand-red: oklch(0.5275 0.2154 28.26);
+
+    --color-clr-bg-extra-light: var(--color-zinc-50);
+    --color-clr-bg-light: var(--color-zinc-100);
+    --color-clr-bg: var(--color-zinc-200);
+    --color-clr-bg-dark: var(--color-zinc-300);
+
+    --color-clr-text-muted: var(--color-zinc-600);
+    --color-clr-text: var(--color-zinc-800);
+    --color-clr-text-strong: var(--color-zinc-900);
 }
 
 body {
-    background: var(--background);
+    /* background: var(--background); */
+    background: var(--color-clr-brand-red);
     color: var(--foreground);
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }

@@ -1,29 +1,22 @@
-"use client";
 import { TextEffect } from "@/components/thirdparty/motion-primitives/TextEffect";
 import Image from "next/image";
 import HeroClient, {
     HeroBgImgContainer,
     HeroHeadingContainer,
     HeroScrollArrowsContainer,
-} from "./Hero.client";
+} from "./HomeHero.client";
 import ScrollArrows from "@/components/ui/ScrollArrows";
 // import Particles from "@/components/thirdparty/reactbits/Particles";
 import { BasicComponentProps } from "@/lib/types/global";
+import { ParticlesLazy } from "../../../LazyParticles";
 
-import dynamic from "next/dynamic";
-
-const Particles = dynamic(
-    () => import("@/components/thirdparty/reactbits/Particles"),
-    { ssr: false, loading: () => null }
-);
-
-export default function HeroDesktop({ className }: BasicComponentProps) {
+export default function HomeHeroDesktop({ className }: BasicComponentProps) {
     return (
         <HeroClient className={className}>
             {/* -z-100 */}
             <div className="relative z-100">
                 <div className="pointer-events-none relative h-[150vh] overflow-hidden lg:h-[300vh]">
-                    <Particles
+                    <ParticlesLazy
                         particleColors={["#fec7da", "#ca010b"]}
                         particleCount={180}
                         particleSpread={6}
@@ -35,6 +28,7 @@ export default function HeroDesktop({ className }: BasicComponentProps) {
                         className={"absolute inset-0 -z-10000 blur-xs"}
                         style={{ transform: "translateZ(0)" }}
                     />
+                    <div id="particles-js"></div>
                 </div>
                 <HeroBgImgContainer className="fixed top-0 right-0 left-0 flex h-screen w-full items-center justify-center">
                     <div className="relative mx-auto h-full w-full max-w-[1200px]">
@@ -67,7 +61,7 @@ function HeroHeading() {
     return (
         <h1 className="pointer-events-auto z-1000 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0.5} preset="blur">
-                Kreatywne studio designu w Trójmieście
+                Kreatywne studio designu w Trójmieście źćęążó
             </TextEffect>
         </h1>
     );
