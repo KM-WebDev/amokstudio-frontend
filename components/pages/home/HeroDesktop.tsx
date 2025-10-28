@@ -7,8 +7,15 @@ import HeroClient, {
     HeroScrollArrowsContainer,
 } from "./Hero.client";
 import ScrollArrows from "@/components/ui/ScrollArrows";
-import Particles from "@/components/thirdparty/reactbits/Particles";
+// import Particles from "@/components/thirdparty/reactbits/Particles";
 import { BasicComponentProps } from "@/lib/types/global";
+
+import dynamic from "next/dynamic";
+
+const Particles = dynamic(
+    () => import("@/components/thirdparty/reactbits/Particles"),
+    { ssr: false, loading: () => null }
+);
 
 export default function HeroDesktop({ className }: BasicComponentProps) {
     return (
@@ -18,10 +25,10 @@ export default function HeroDesktop({ className }: BasicComponentProps) {
                 <div className="pointer-events-none relative h-[150vh] overflow-hidden lg:h-[300vh]">
                     <Particles
                         particleColors={["#fec7da", "#ca010b"]}
-                        particleCount={300}
-                        particleSpread={10}
-                        speed={0.2}
-                        particleBaseSize={450}
+                        particleCount={180}
+                        particleSpread={6}
+                        speed={0.1}
+                        particleBaseSize={350}
                         moveParticlesOnHover={false}
                         alphaParticles={false}
                         disableRotation={false}
@@ -60,7 +67,7 @@ function HeroHeading() {
     return (
         <h1 className="pointer-events-auto z-1000 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
             <TextEffect per="char" delay={0.5} preset="blur">
-                Kreatywne studio desadfassignu w Trójmieście
+                Kreatywne studio designu w Trójmieście
             </TextEffect>
         </h1>
     );

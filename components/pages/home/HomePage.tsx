@@ -8,7 +8,7 @@ export default async function HomePage() {
         <>
             <Hero />
             <PageContent>
-                <Bento />
+                {/* <Bento /> */}
                 <div className="h-[1000px]"></div>
                 <Logo />
             </PageContent>
