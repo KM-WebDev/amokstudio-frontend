@@ -113,17 +113,19 @@ function Content({
     // gapSize = "md",
 }: ContentProps) {
     return (
-        <div
-            className={cn(
-                "max-xs:px-2",
-                "flex w-full max-w-[1200px] flex-col px-4",
-                "lg:px-5",
-                "xl:px-0",
-                // gapped && contentGap[gapSize],
-                className
-            )}
-        >
-            {children}
+        <div className="max-lg:max-w-2xl">
+            <div
+                className={cn(
+                    "max-xs:px-2",
+                    "container flex flex-col px-4 xl:max-w-[1200px]",
+                    "lg:px-5",
+                    "xl:px-0",
+                    // gapped && contentGap[gapSize],
+                    className
+                )}
+            >
+                {children}
+            </div>
         </div>
     );
 }

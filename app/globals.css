@@ -27,6 +27,7 @@
     --color-clr-bg: var(--color-zinc-200);
     --color-clr-bg-dark: var(--color-zinc-300);
 
+    --color-clr-text-extra-muted: var(--color-zinc-600);
     --color-clr-text-muted: var(--color-zinc-600);
     --color-clr-text: var(--color-zinc-800);
     --color-clr-text-strong: var(--color-zinc-900);
@@ -36,6 +37,6 @@ body {
     /* background: var(--background); */
     background: var(--color-clr-brand-red);
     color: var(--foreground);
-    font-family: "sofia-pro-soft";
+    font-family: "sofia-pro-soft", sans-serif;
     /* font-family: "Open Sans", Arial, Helvetica, sans-serif; */
 }

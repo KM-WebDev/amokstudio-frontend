@@ -27,13 +27,13 @@ export default async function RootLayout({
                 {/* <GlobalControls> */}
                 <NavigationControls>
                     <Header />
-                    <AppUtilities />
                     <Main>{children}</Main>
                     <Footer />
                 </NavigationControls>
                 <SanityLive />
                 {(await draftMode()).isEnabled && <VisualEditing />}
                 {/* </GlobalControls> */}
+                <AppUtilities />
             </body>
         </html>
     );
