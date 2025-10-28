@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlFor } from "@/services/sanity/imageUrl";
+import { urlFor } from "@/services/sanity/utils";
 import Link from "next/link";
 import Section from "./base/Section";
 import Heading from "./base/Heading";

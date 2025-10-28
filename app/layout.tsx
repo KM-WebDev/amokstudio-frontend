@@ -8,6 +8,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import NavigationControls from "@/controls/context/NavigationControls";
 import { draftMode } from "next/headers";
 import { SanityLive } from "@/services/sanity/client";
+import { fetchAllSocials } from "@/services/sanity/fetch";
 // import ScrollableArea from "@/components/base/ScrollableArea";
 
 export default async function RootLayout({
@@ -15,6 +16,8 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const socials = await fetchAllSocials();
+
     return (
         <html lang="pl">
             <head>
@@ -26,9 +29,9 @@ export default async function RootLayout({
             <body className="overscroll-none">
                 {/* <GlobalControls> */}
                 <NavigationControls>
-                    <Header />
+                    <Header socials={socials} />
                     <Main>{children}</Main>
-                    <Footer />
+                    <Footer>{socials}</Footer>
                 </NavigationControls>
                 <SanityLive />
                 {(await draftMode()).isEnabled && <VisualEditing />}

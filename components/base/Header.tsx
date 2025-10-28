@@ -4,8 +4,9 @@ import Navigation from "./Navigation";
 import { HeaderContainer } from "./Header.client";
 import { NavigationToggleButton } from "./NavigationMobile";
 import Logo from "../Logo";
+import { HTMLAttributes } from "react";
 
-export default function Header() {
+export default function Header({ socials }: { socials: string[] }) {
     return (
         <header className="fixed top-0 right-0 left-0 z-10000 shadow">
             <HeaderContainer className="h-full w-full bg-zinc-100/60 backdrop-blur-md">
@@ -20,7 +21,7 @@ export default function Header() {
                             </Link>
                             <Navigation />
                         </div>
-                        <Socials className="hidden lg:flex" />
+                        <Socials socials={socials} className="hidden lg:flex" />
                     </div>
                     <NavigationToggleButton
                         className="pr-5 lg:hidden"
