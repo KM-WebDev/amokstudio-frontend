@@ -1,4 +1,5 @@
 import Section from "@/components/base/Section";
+import SectionHeading from "@/components/base/SectionHeading";
 import Button from "@/components/ui/Button";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
@@ -9,17 +10,11 @@ export default function HomeBento() {
         <Section className="bg-zinc-200">
             <Section.Content className="flex max-w-[1200px] flex-col items-center gap-12">
                 <div className="mx-auto flex max-w-2xl flex-col lg:max-w-7xl">
-                    <div className="flex items-center justify-center gap-2">
-                        <span className="text-clr-text-muted font-bold">
-                            01
-                        </span>
-                        <h2 className="text-clr-brand-red text-center text-base/7 font-semibold">
-                            Usługi
-                        </h2>
-                    </div>
-                    <p className="text-clr-text mx-auto max-w-xl text-center text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-                        Wszystko co potrzebujesz związane z designem
-                    </p>
+                    <SectionHeading
+                        number="01"
+                        heading="Usługi"
+                        text="Wszystko co potrzebujesz związane z designem"
+                    />
                 </div>
                 <Grid />
                 <Button text="Zobacz Więcej" href="/services" as="link" />
