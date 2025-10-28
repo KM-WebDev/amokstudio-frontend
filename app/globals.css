@@ -14,8 +14,13 @@
     --font-mono: var(--font-geist-mono);
     --breakpoint-xs: 25rem; /* 400px */
 
+    --color-clr-brand-rose–light: oklch(0.9235 0.0668 355.93);
     --color-clr-brand-rose: oklch(0.8835 0.0668 355.93);
+    --color-clr-brand-rose-dark: oklch(0.7835 0.0668 355.93);
+
+    --color-clr-brand-red-light: oklch(0.5775 0.2154 28.26);
     --color-clr-brand-red: oklch(0.5275 0.2154 28.26);
+    --color-clr-brand-red-dark: oklch(0.4875 0.2154 28.26);
 
     --color-clr-bg-extra-light: var(--color-zinc-50);
     --color-clr-bg-light: var(--color-zinc-100);

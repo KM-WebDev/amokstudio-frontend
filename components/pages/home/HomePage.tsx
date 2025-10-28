@@ -1,12 +1,12 @@
-import Bento from "./HomeBento";
-import Hero from "./hero/HomeHero";
+import HomeBento from "./HomeBento";
+import HomeHero from "./hero/HomeHero";
 
 export default async function HomePage() {
     return (
         <>
-            <Hero />
+            <HomeHero />
             <div>
-                <Bento />
+                <HomeBento />
                 <div className="h-[1000px]" />
             </div>
         </>

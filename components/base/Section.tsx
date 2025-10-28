@@ -79,38 +79,38 @@ export default function Section({
     );
 }
 
-const contentGap = {
-    sm: cn(
-        "max-xs:gap-2",
-        "gap-4",
-        "md:gap-5",
-        "lg:gap-6",
-        "xl:gap-8",
-        "2xl:gap-10"
-    ),
-    md: cn(
-        "max-xs:gap-6",
-        "gap-8",
-        "md:gap-10",
-        "lg:gap-12",
-        "xl:gap-15",
-        "2xl:gap-20"
-    ),
-    lg: cn(
-        "max-xs:gap-12",
-        "gap-16",
-        "md:gap-20",
-        "lg:gap-24",
-        "xl:gap-30",
-        "2xl:gap-40"
-    ),
-};
+// const contentGap = {
+//     sm: cn(
+//         "max-xs:gap-2",
+//         "gap-4",
+//         "md:gap-5",
+//         "lg:gap-6",
+//         "xl:gap-8",
+//         "2xl:gap-10"
+//     ),
+//     md: cn(
+//         "max-xs:gap-6",
+//         "gap-8",
+//         "md:gap-10",
+//         "lg:gap-12",
+//         "xl:gap-15",
+//         "2xl:gap-20"
+//     ),
+//     lg: cn(
+//         "max-xs:gap-12",
+//         "gap-16",
+//         "md:gap-20",
+//         "lg:gap-24",
+//         "xl:gap-30",
+//         "2xl:gap-40"
+//     ),
+// };
 
 function Content({
     children,
     className,
-    gapped = true,
-    gapSize = "md",
+    // gapped = true,
+    // gapSize = "md",
 }: ContentProps) {
     return (
         <div
@@ -119,7 +119,7 @@ function Content({
                 "flex w-full max-w-[1200px] flex-col px-4",
                 "lg:px-5",
                 "xl:px-0",
-                gapped && contentGap[gapSize],
+                // gapped && contentGap[gapSize],
                 className
             )}
         >

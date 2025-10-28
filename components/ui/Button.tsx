@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 
 const variants = {
-    primary: "",
+    primary: "bg-clr-brand-red text-zinc-100 hover:bg-clr-brand-red-dark",
     opposite: "",
 };
 
@@ -29,7 +29,7 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const className =
-        "group relative flex cursor-pointer items-center justify-center gap-4 rounded-4xl px-6 py-3 text-base font-semibold transition-all duration-200";
+        "group relative flex cursor-pointer items-center justify-center gap-4 rounded-4xl px-5 py-2 text-base font-semibold transition-all duration-200 shadow";
 
     const combinedClasses = cn(passedClassName, variants[variant], className);
 

@@ -7,17 +7,22 @@ import Image from "next/image";
 export default function HomeBento() {
     return (
         <Section className="bg-zinc-200">
-            <Section.Content className="flex flex-col items-center">
-                <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-clr-brand-red text-center text-base/7 font-semibold">
-                        Moje usługi
-                    </h2>
-                    <p className="mx-auto max-w-xl text-center text-4xl font-semibold tracking-tight text-balance text-zinc-900 sm:text-5xl">
+            <Section.Content className="flex max-w-[1200px] flex-col items-center gap-12">
+                <div className="mx-auto flex max-w-2xl flex-col lg:max-w-7xl">
+                    <div className="flex items-center justify-center gap-2">
+                        <span className="text-clr-text-muted font-bold">
+                            01
+                        </span>
+                        <h2 className="text-clr-brand-red text-center text-base/7 font-semibold">
+                            Usługi
+                        </h2>
+                    </div>
+                    <p className="text-clr-text mx-auto max-w-xl text-center text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
                         Wszystko co potrzebujesz związane z designem
                     </p>
                 </div>
                 <Grid />
-                <Button text="Zobacz" />
+                <Button text="Zobacz Więcej" href="/services" as="link" />
             </Section.Content>
         </Section>
     );
