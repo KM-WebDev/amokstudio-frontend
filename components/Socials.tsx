@@ -38,7 +38,7 @@ function BrandIcon({ brand }: BrandIconProps) {
     return (
         <div className="hover:text-clr-brand-red transition-colors duration-200">
             <div
-                className="h-[20] w-[20]"
+                className="h-5 w-5"
                 style={{
                     WebkitMaskImage: `url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg)`,
                     maskImage: `url(https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg)`,
@@ -48,15 +48,6 @@ function BrandIcon({ brand }: BrandIconProps) {
             ></div>
         </div>
     );
-    // return (
-    //     <Image
-    //         className={className}
-    //         alt={brand}
-    //         src={`https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/${brand}.svg`}
-    //         width={20}
-    //         height={20}
-    //     />
-    // );
 }
 
 function getBrandFromUrl(url: string) {
