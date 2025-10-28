@@ -1,7 +1,6 @@
 import Heading from "@/components/base/Heading";
 import Section from "@/components/base/Section";
 import SectionHeading from "@/components/base/SectionHeading";
-import Button from "@/components/ui/Button";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 import Image from "next/image";
 

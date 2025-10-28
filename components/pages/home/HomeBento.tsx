@@ -111,7 +111,7 @@ function Top({ className }: BasicComponentProps) {
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo.
             </TextBox>
-            <ImageContainer className="h-[250px] sm:h-[320px] lg:h-[170px]">
+            <ImageContainer className="h-[250px] sm:h-80 lg:h-[170px]">
                 <Image
                     src={"/book-1.png"}
                     fill
