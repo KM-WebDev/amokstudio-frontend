@@ -27,7 +27,7 @@
             format("woff"),
         url("https://use.typekit.net/af/8bb068/00000000000000007735a146/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n5&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: normal;
     font-weight: 500;
     font-stretch: normal;
@@ -42,7 +42,7 @@
             format("woff"),
         url("https://use.typekit.net/af/f5916e/00000000000000007735a147/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n7&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: normal;
     font-weight: 700;
     font-stretch: normal;
@@ -57,7 +57,7 @@
             format("woff"),
         url("https://use.typekit.net/af/ca4740/00000000000000007735a149/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i7&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: italic;
     font-weight: 700;
     font-stretch: normal;
@@ -72,7 +72,7 @@
             format("woff"),
         url("https://use.typekit.net/af/ef39b0/00000000000000007735a14f/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n3&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: normal;
     font-weight: 300;
     font-stretch: normal;
@@ -87,7 +87,7 @@
             format("woff"),
         url("https://use.typekit.net/af/707483/00000000000000007735a154/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n4&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: normal;
     font-weight: 400;
     font-stretch: normal;
@@ -102,7 +102,7 @@
             format("woff"),
         url("https://use.typekit.net/af/9a853f/00000000000000007735a157/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i4&v=3")
             format("opentype");
-    font-display: swap;
+    font-display: swap; /* might need to change to block instead*/
     font-style: italic;
     font-weight: 400;
     font-stretch: normal;

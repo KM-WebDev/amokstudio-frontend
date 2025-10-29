@@ -1,7 +1,11 @@
 import { defineQuery } from "next-sanity";
 
 export const PORTFOLIO_HOMEPAGE_QUERY =
-    defineQuery(`*[_type == "portfolio" && show_on_homepage == true]{
+    defineQuery(`*[_type == "portfolio" && showOnHomepage == true] | order(homepageOrder asc) {
+    _id, title, mainImage, description
+}`);
+
+export const PORTFOLIO_ALL_QUERY = defineQuery(`*[_type == "portfolio"]{
     _id, title, mainImage, description
 }`);
 

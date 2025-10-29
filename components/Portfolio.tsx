@@ -39,19 +39,20 @@ export default function PortfolioDisplay({ portflios }: PortfolioDisplayProps) {
                             <Link
                                 href={`/portfolio/${portflio._id}`}
                                 key={portflio._id}
-                                className="group relative h-80 w-80 cursor-pointer overflow-hidden rounded-lg"
+                                className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg"
                             >
                                 <Image
                                     src={urlFor(portflio.mainImage)
                                         .width(1200)
+                                        .auto("format")
                                         .url()}
                                     alt={portflio.title}
                                     fill
-                                    sizes="100vw, 50vw"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
 
-                                <div className="absolute inset-0 flex h-full w-full flex-col justify-center bg-gray-800/60 px-8 py-4 opacity-0 backdrop-blur-sm transition-opacity duration-700 group-hover:opacity-100">
+                                <div className="absolute inset-0 flex h-full w-full flex-col justify-center bg-gray-800/60 px-8 py-4 opacity-0 backdrop-blur-lg transition-opacity duration-700 group-hover:opacity-100">
                                     <h2 className="text-xl font-semibold text-white capitalize">
                                         {portflio.title}
                                     </h2>
@@ -65,28 +66,5 @@ export default function PortfolioDisplay({ portflios }: PortfolioDisplayProps) {
                 </div>
             </Section.Content>
         </Section>
-    );
-
-    return (
-        <div>
-            {portflios.map((portflio) => {
-                if (portflio.mainImage == null) {
-                    return;
-                }
-                return (
-                    <Link
-                        href={`/portfolio/${portflio._id}`}
-                        key={portflio._id}
-                    >
-                        <Image
-                            src={urlFor(portflio.mainImage).width(200).url()}
-                            alt={portflio.title}
-                            width={200}
-                            height={600 / 3}
-                        />
-                    </Link>
-                );
-            })}
-        </div>
     );
 }
