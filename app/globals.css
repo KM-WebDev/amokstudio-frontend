@@ -34,6 +34,110 @@
     --color-clr-text-strong: var(--color-zinc-900);
 }
 
+@layer utilities {
+    /* === GAP === */
+    .gap-xs {
+        @apply max-xs:gap-3 gap-3 lg:gap-4;
+    }
+    .gap-sm {
+        @apply max-xs:gap-5 gap-6 lg:gap-6;
+    }
+    .gap-md {
+        @apply max-xs:gap-10 gap-12 lg:gap-14 xl:gap-14;
+    }
+    .gap-lg {
+        @apply max-xs:gap-16 gap-18 lg:gap-20 xl:gap-20;
+    }
+    .gap-xl {
+        @apply max-xs:gap-24 gap-26 lg:gap-30 xl:gap-30;
+    }
+
+    /* === PADDING-TOP === */
+    .pt-xs {
+        @apply max-xs:pt-3 pt-3 lg:pt-4;
+    }
+    .pt-sm {
+        @apply max-xs:pt-5 pt-6 lg:pt-6;
+    }
+    .pt-md {
+        @apply max-xs:pt-10 pt-12 lg:pt-14 xl:pt-14;
+    }
+    .pt-lg {
+        @apply max-xs:pt-16 pt-18 lg:pt-20 xl:pt-20;
+    }
+    .pt-xl {
+        @apply max-xs:pt-24 pt-26 lg:pt-30 xl:pt-30;
+    }
+
+    /* === PADDING-BOTTOM === */
+    .pb-xs {
+        @apply max-xs:pb-3 pb-3 lg:pb-4;
+    }
+    .pb-sm {
+        @apply max-xs:pb-5 pb-6 lg:pb-6;
+    }
+    .pb-md {
+        @apply max-xs:pb-10 pb-12 lg:pb-14 xl:pb-14;
+    }
+    .pb-lg {
+        @apply max-xs:pb-16 pb-18 lg:pb-20 xl:pb-20;
+    }
+    .pb-xl {
+        @apply max-xs:pb-24 pb-26 lg:pb-30 xl:pb-30;
+    }
+
+    /* === PADDING-LEFT/RIGHT === */
+    .px-xs {
+        @apply max-xs:px-3 px-3 lg:px-4;
+    }
+    .px-sm {
+        @apply max-xs:px-5 px-6 lg:px-6;
+    }
+    .px-md {
+        @apply max-xs:px-10 px-12 lg:px-14 xl:px-14;
+    }
+    .px-lg {
+        @apply max-xs:px-16 px-18 lg:px-20 xl:px-20;
+    }
+    .px-xl {
+        @apply max-xs:px-24 px-26 lg:px-30 xl:px-30;
+    }
+
+    /* === PADDING-TOP/BOTTOM === */
+    .py-xs {
+        @apply max-xs:py-3 py-3 lg:py-4;
+    }
+    .py-sm {
+        @apply max-xs:py-5 py-6 lg:py-6;
+    }
+    .py-md {
+        @apply max-xs:py-10 py-12 lg:py-14 xl:py-14;
+    }
+    .py-lg {
+        @apply max-xs:py-16 py-18 lg:py-20 xl:py-20;
+    }
+    .py-xl {
+        @apply max-xs:py-24 py-26 lg:py-30 xl:py-30;
+    }
+
+    /* === PADDING (all sides) === */
+    .p-xs {
+        @apply max-xs:p-3 p-3 lg:p-4;
+    }
+    .p-sm {
+        @apply max-xs:p-5 p-6 lg:p-6;
+    }
+    .p-md {
+        @apply max-xs:p-10 p-12 lg:p-14 xl:p-14;
+    }
+    .p-lg {
+        @apply max-xs:p-16 p-18 lg:p-20 xl:p-20;
+    }
+    .p-xl {
+        @apply max-xs:p-24 p-26 lg:p-30 xl:p-30;
+    }
+}
+
 body {
     /* background: var(--background); */
     background: var(--color-clr-brand-red);
@@ -41,3 +145,46 @@ body {
     font-family: "sofia-pro-soft", sans-serif;
     /* font-family: "Open Sans", Arial, Helvetica, sans-serif; */
 }
+
+/* 
+@layer utilities {
+    .section-gap-xs {
+        @apply max-xs:gap-2 gap-2 md:gap-3 lg:gap-3 xl:gap-4 2xl:gap-4;
+    }
+    .section-gap-sm {
+        @apply max-xs:gap-4 gap-4 md:gap-5 lg:gap-5 xl:gap-6 2xl:gap-6;
+    }
+    .section-gap-md {
+        @apply max-xs:gap-7 gap-7 md:gap-9 lg:gap-9 xl:gap-10 2xl:gap-10;
+    }
+    .section-gap-lg {
+        @apply max-xs:gap-10 gap-10 md:gap-14 lg:gap-14 xl:gap-16 2xl:gap-16;
+    }
+    .section-gap-xl {
+        @apply max-xs:gap-16 gap-16 md:gap-24 lg:gap-24 xl:gap-30 2xl:gap-30;
+    }
+
+    .section-pt-sm {
+        @apply max-xs:pt-2 pt-4 md:pt-5 lg:pt-6 xl:pt-8 2xl:pt-10;
+    }
+
+    .section-pt-md {
+        @apply max-xs:pt-6 pt-8 md:pt-10 lg:pt-12 xl:pt-15 2xl:pt-20;
+    }
+
+    .section-pt-lg {
+        @apply max-xs:pt-12 pt-16 md:pt-20 lg:pt-24 xl:pt-30 2xl:pt-40;
+    }
+
+    .section-pb-sm {
+        @apply max-xs:pb-2 pb-4 md:pb-5 lg:pb-6 xl:pb-8 2xl:pb-10;
+    }
+
+    .section-pb-md {
+        @apply max-xs:pb-6 pb-8 md:pb-10 lg:pb-12 xl:pb-15 2xl:pb-20;
+    }
+
+    .section-pb-lg {
+        @apply max-xs:pb-12 pb-16 md:pb-20 lg:pb-24 xl:pb-30 2xl:pb-40;
+    }
+} */

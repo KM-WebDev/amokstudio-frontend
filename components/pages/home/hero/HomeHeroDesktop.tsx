@@ -14,7 +14,7 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
     return (
         <HeroClient className={className}>
             {/* -z-100 */}
-            <div className="relative z-100">
+            <div className="relative">
                 <div className="pointer-events-none relative h-[150vh] overflow-hidden lg:h-[300vh]">
                     <ParticlesLazy
                         particleColors={["#fec7da", "#ca010b"]}
@@ -25,7 +25,7 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
                         moveParticlesOnHover={false}
                         alphaParticles={false}
                         disableRotation={false}
-                        className={"absolute inset-0 -z-10000 blur-xs"}
+                        className={"absolute inset-0 blur-xs"}
                         style={{ transform: "translateZ(0)" }}
                     />
                     <div id="particles-js"></div>
@@ -35,7 +35,7 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
                         <Image
                             src={"/logo-red.svg"}
                             fill
-                            sizes="100vw "
+                            sizes="100vw"
                             className="relative h-full object-contain px-5 pb-5 lg:px-[50px]"
                             alt="logo"
                         />
@@ -43,12 +43,14 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
                 </HeroBgImgContainer>
                 <HeroHeadingContainer
                     className={
-                        "fixed top-[30%] left-[50%] z-10 container w-full -translate-x-[50%] -translate-y-[50%] lg:top-[50%]"
+                        "fixed top-[30%] left-[50%] container w-full -translate-x-[50%] -translate-y-[50%] lg:top-[50%]"
                     }
                 >
-                    <HeroHeading />
+                    <h1 className="-z-10 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
+                        Kreatywne studio designu w Trójmieście źćęążó
+                    </h1>
                 </HeroHeadingContainer>
-                <HeroScrollArrowsContainer className="fixed right-0 bottom-2 z-10 mb-5 flex w-full items-end justify-center gap-2 px-5 text-sm text-zinc-500">
+                <HeroScrollArrowsContainer className="fixed right-0 bottom-2 mb-5 flex w-full items-end justify-center gap-2 px-5 text-sm text-zinc-500">
                     <span className="">Zjedz niżej</span>
                     <ScrollArrows />
                 </HeroScrollArrowsContainer>
@@ -57,12 +59,12 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
     );
 }
 
-function HeroHeading() {
-    return (
-        <h1 className="pointer-events-auto z-1000 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
-            <TextEffect per="char" delay={0.5} preset="blur">
-                Kreatywne studio designu w Trójmieście źćęążó
-            </TextEffect>
-        </h1>
-    );
-}
+// function HeroHeading() {
+//     return (
+//         <h1 className="pointer-events-auto -z-10 flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold lg:gap-3 lg:text-7xl">
+//             <TextEffect per="char" delay={0.5} preset="blur">
+
+//             </TextEffect>
+
+//     );
+// }

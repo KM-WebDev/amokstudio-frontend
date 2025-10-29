@@ -73,7 +73,7 @@ export default function HeroClient({
         >
             <div
                 ref={scrollRef}
-                className={cn("pointer-events-none -z-1000", className)}
+                className={cn("pointer-events-none z-1000", className)}
                 style={outerStyle}
             >
                 {children}

@@ -10,7 +10,7 @@ export default function SectionHeading({
     number,
 }: SectionHeadingProps) {
     return (
-        <div className="flex flex-col justify-center gap-2">
+        <div className="flex flex-col justify-center">
             <div className="flex items-center justify-center gap-2">
                 <span className="text-clr-text-muted font-bold">{number}</span>
                 <h2 className="text-clr-brand-red text-center text-base/7 font-semibold">

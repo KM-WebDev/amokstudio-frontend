@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function HomeBento() {
     return (
         <Section className="bg-zinc-200">
-            <Section.Content className="flex max-w-[1200px] flex-col items-center gap-12">
+            <Section.Content className="flex max-w-[1200px] flex-col items-center">
                 <div className="mx-auto flex max-w-2xl flex-col lg:max-w-7xl">
                     <SectionHeading
                         number="01"
@@ -25,7 +25,7 @@ export default function HomeBento() {
 
 function Grid() {
     return (
-        <div className="relative grid items-stretch gap-6 max-lg:container lg:grid-cols-3 lg:gap-4">
+        <div className="gap-xs relative grid items-stretch max-lg:container lg:grid-cols-3">
             <Left className="lg:col-start-1 lg:row-span-5" />
             <Top className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
             <Bottom className="lg:col-start-2 lg:row-span-3 lg:row-start-3" />
@@ -58,7 +58,7 @@ function GridCard({ className, children }: BasicComponentProps) {
     return (
         <div
             className={cn(
-                "relative flex h-full flex-col justify-between gap-8 rounded-xl bg-zinc-50 px-8 py-12 shadow-lg lg:gap-6 lg:px-6 lg:py-10",
+                "gap-sm p-sm relative flex h-full flex-col justify-between rounded-xl bg-zinc-50 shadow-lg",
                 className
             )}
         >
@@ -83,10 +83,7 @@ function ImageContainer({ children, className }: BasicComponentProps) {
 export function Left({ className }: BasicComponentProps) {
     return (
         <GridCard
-            className={cn(
-                "max-lg:rounded-t-4xl lg:rounded-l-4xl lg:pb-6!",
-                className
-            )}
+            className={cn("max-lg:rounded-t-4xl lg:rounded-l-4xl", className)}
         >
             <TextBox title="Logo i Branding" className="">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
@@ -98,6 +95,7 @@ export function Left({ className }: BasicComponentProps) {
                     fill
                     className="object-cover"
                     alt="Kobieta trzymająca bawełnianą torbę z logiem Amok Studio"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </ImageContainer>
         </GridCard>
@@ -106,7 +104,7 @@ export function Left({ className }: BasicComponentProps) {
 
 function Top({ className }: BasicComponentProps) {
     return (
-        <GridCard className={cn("lg:pb-6!", className)}>
+        <GridCard className={cn("", className)}>
             <TextBox title="Logo i Branding">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo.
@@ -117,6 +115,7 @@ function Top({ className }: BasicComponentProps) {
                     fill
                     className="object-cover object-center"
                     alt="Kobieta trzymająca bawełnianą torbę z logiem Amok Studio"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </ImageContainer>
         </GridCard>
@@ -125,13 +124,14 @@ function Top({ className }: BasicComponentProps) {
 
 function Bottom({ className }: BasicComponentProps) {
     return (
-        <GridCard className={cn("lg:pt-6!", className)}>
+        <GridCard className={cn("", className)}>
             <ImageContainer className="xs:h-[400px] h-[300px] max-lg:order-1 sm:h-[450px] lg:h-[200px]">
                 <Image
                     src={"/menu.jpg"}
                     fill
                     className="object-cover"
                     alt="Kobieta trzymająca bawełnianą torbę z logiem Amok Studio"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </ImageContainer>
             <TextBox title="Logo i Branding">
@@ -145,10 +145,7 @@ function Bottom({ className }: BasicComponentProps) {
 function Right({ className }: BasicComponentProps) {
     return (
         <GridCard
-            className={cn(
-                "max-lg:rounded-b-4xl lg:rounded-r-4xl lg:pt-6!",
-                className
-            )}
+            className={cn("max-lg:rounded-b-4xl lg:rounded-r-4xl", className)}
         >
             <ImageContainer className="h-full grow max-lg:order-1 max-lg:h-[550px]">
                 <Image
@@ -156,6 +153,7 @@ function Right({ className }: BasicComponentProps) {
                     fill
                     className="object-cover object-bottom"
                     alt="Kobieta trzymająca bawełnianą torbę z logiem Amok Studio"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </ImageContainer>
             <TextBox title="Logo i Branding">

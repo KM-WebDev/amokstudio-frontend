@@ -1,58 +1,35 @@
 import { cn } from "@/lib/utils/cn";
 type paddingDirection = "top" | "bottom";
+type SpaceSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
     padded?: paddingDirection[] | boolean;
-    paddingSize?: "sm" | "md" | "lg";
+    paddingSize?: SpaceSizes;
 }
 
 interface ContentProps {
     children: React.ReactNode;
     className?: string;
     gapped?: boolean;
-    gapSize?: "sm" | "md" | "lg";
+    gapSize?: SpaceSizes;
 }
 
 const sectionPaddingTop = {
-    sm: cn("max-xs:pt-2", "pt-4", "md:pt-5", "lg:pt-6", "xl:pt-8", "2xl:pt-10"),
-    md: cn(
-        "max-xs:pt-6",
-        "pt-8",
-        "md:pt-10",
-        "lg:pt-12",
-        "xl:pt-15",
-        "2xl:pt-20"
-    ),
-    lg: cn(
-        "max-xs:pt-12",
-        "pt-16",
-        "md:pt-20",
-        "lg:pt-24",
-        "xl:pt-30",
-        "2xl:pt-40"
-    ),
+    xs: "pt-xs",
+    sm: "pt-sm",
+    md: "pt-md",
+    lg: "pt-lg",
+    xl: "pt-xl",
 };
 
 const sectionPaddingBottom = {
-    sm: cn("max-xs:pb-2", "pb-4", "md:pb-5", "lg:pb-6", "xl:pb-8", "2xl:pb-10"),
-    md: cn(
-        "max-xs:pb-6",
-        "pb-8",
-        "md:pb-10",
-        "lg:pb-12",
-        "xl:pb-15",
-        "2xl:pb-20"
-    ),
-    lg: cn(
-        "max-xs:pb-12",
-        "pb-16",
-        "md:pb-20",
-        "lg:pb-24",
-        "xl:pb-30",
-        "2xl:pb-40"
-    ),
+    xs: "pb-xs",
+    sm: "pb-sm",
+    md: "pb-md",
+    lg: "pb-lg",
+    xl: "pb-xl",
 };
 
 export default function Section({
@@ -79,48 +56,29 @@ export default function Section({
     );
 }
 
-// const contentGap = {
-//     sm: cn(
-//         "max-xs:gap-2",
-//         "gap-4",
-//         "md:gap-5",
-//         "lg:gap-6",
-//         "xl:gap-8",
-//         "2xl:gap-10"
-//     ),
-//     md: cn(
-//         "max-xs:gap-6",
-//         "gap-8",
-//         "md:gap-10",
-//         "lg:gap-12",
-//         "xl:gap-15",
-//         "2xl:gap-20"
-//     ),
-//     lg: cn(
-//         "max-xs:gap-12",
-//         "gap-16",
-//         "md:gap-20",
-//         "lg:gap-24",
-//         "xl:gap-30",
-//         "2xl:gap-40"
-//     ),
-// };
+const contentGap = {
+    xs: "gap-xs",
+    sm: "gap-sm",
+    md: "gap-md",
+    lg: "gap-lg",
+    xl: "gap-xl",
+};
 
 function Content({
     children,
     className,
-    // gapped = true,
-    // gapSize = "md",
+    gapped = true,
+    gapSize = "md",
 }: ContentProps) {
     return (
-        <div className="max-lg:max-w-2xl">
+        <div className="flex w-full flex-col items-center max-lg:max-w-2xl">
             <div
                 className={cn(
                     "max-xs:px-2",
                     "container flex flex-col px-4 xl:max-w-[1200px]",
                     "lg:px-5",
                     "xl:px-0",
-                    // gapped && contentGap[gapSize],
+                    gapped && contentGap[gapSize],
                     className
                 )}
             >
