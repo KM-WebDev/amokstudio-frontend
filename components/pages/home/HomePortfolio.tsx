@@ -217,7 +217,13 @@ const Card = ({ card, className }: { card: Card; className?: string }) => {
                     />
                 </div>
             </div>
-            <div className="from-clr-brand-red/60 via-clr-brand-red/10 to-clr-brand-red/5 group-hover:bg-clr-brand-red/40 absolute inset-0 z-10 bg-linear-0 transition-colors group-hover:backdrop-blur-xs" />
+            <div
+                className={cn(
+                    "absolute inset-0 z-10 bg-linear-0 transition-colors group-hover:backdrop-blur-xs",
+                    "from-clr-brand-red/60 via-clr-brand-red/10 to-clr-brand-red/5",
+                    "group-hover:from-clr-brand-red/80 group-hover:via-clr-brand-red/50 group-hover:to-clr-brand-red/30"
+                )}
+            />
         </div>
     );
 };
