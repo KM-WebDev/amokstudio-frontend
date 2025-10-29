@@ -137,15 +137,15 @@ function MobileCarousel({ cards, className, Top }: DesktopCarouselProps) {
                     })}
                 >
                     <div className="z-10 flex flex-col items-center justify-center gap-10">
-                        <CarouselDots
-                            className=""
-                            dotClassName="w-3 h-3 bg-clr-text-muted border-2 border-clr-text-muted"
-                            activeDotClassName="bg-clr-bg"
-                        />
-                        <div className="flex gap-10 text-2xl">
+                        <div className="flex items-center justify-center gap-10 text-2xl">
                             <CarouselPrevButton>
                                 <IoIosArrowBack />
                             </CarouselPrevButton>
+                            <CarouselDots
+                                className="gap-0.5"
+                                dotClassName="w-3 h-3 bg-clr-text-muted border-2 border-clr-text-muted"
+                                activeDotClassName="bg-clr-bg"
+                            />
                             <CarouselNextButton>
                                 <IoIosArrowForward />
                             </CarouselNextButton>
