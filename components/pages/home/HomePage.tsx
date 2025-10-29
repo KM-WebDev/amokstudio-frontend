@@ -11,6 +11,7 @@ export default async function HomePage() {
                 <HomeBento />
                 <HomeAbout />
                 <HomePortfolio />
+                <div className="h-screen" />
             </div>
         </>
     );

@@ -89,7 +89,7 @@ export function Left({ className }: BasicComponentProps) {
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo.
             </TextBox>
-            <ImageContainer className="h-full grow max-lg:h-[500px]">
+            <ImageContainer className="h-full grow max-lg:h-[450px] max-sm:h-[300px]">
                 <Image
                     src={"/torba-amok.jpg"}
                     fill
@@ -125,7 +125,7 @@ function Top({ className }: BasicComponentProps) {
 function Bottom({ className }: BasicComponentProps) {
     return (
         <GridCard className={cn("", className)}>
-            <ImageContainer className="xs:h-[400px] h-[300px] max-lg:order-1 sm:h-[450px] lg:h-[200px]">
+            <ImageContainer className="xs:h-[300px] h-[350px] max-lg:order-1 sm:h-[400px] lg:h-[200px]">
                 <Image
                     src={"/menu.jpg"}
                     fill
@@ -147,7 +147,7 @@ function Right({ className }: BasicComponentProps) {
         <GridCard
             className={cn("max-lg:rounded-b-4xl lg:rounded-r-4xl", className)}
         >
-            <ImageContainer className="h-full grow max-lg:order-1 max-lg:h-[550px]">
+            <ImageContainer className="h-full grow max-lg:order-1 max-lg:h-[550px] max-sm:h-[350px]">
                 <Image
                     src={"/kebab-tshirt.png"}
                     fill

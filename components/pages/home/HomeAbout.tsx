@@ -15,7 +15,7 @@ export function HomeAbout() {
                 />
 
                 <div className="gap-md flex w-full flex-col items-center justify-center lg:flex-row">
-                    <div className="relative h-[400px] w-full lg:h-[350px]">
+                    <div className="relative h-[300px] w-full sm:h-[400px] lg:h-[350px]">
                         <Image
                             src={"/anastazja.jpg"}
                             alt="kobieta robiąca zdjęcie telefon"

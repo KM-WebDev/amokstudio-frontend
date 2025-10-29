@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils/cn";
 import { useScroll, useTransform } from "motion/react";
 import { motion } from "motion/react";
 import { ReactNode, useRef } from "react";
@@ -7,10 +8,12 @@ import { ReactNode, useRef } from "react";
 interface HorizontalScrollCarousel {
     children: ReactNode;
     title: ReactNode;
+    className?: string;
 }
 export default function HorizontalScrollCarousel({
     children,
     title,
+    className,
 }: HorizontalScrollCarousel) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -29,9 +32,9 @@ export default function HorizontalScrollCarousel({
         [0.8, 1, 1, 0.8]
     );
     const x = useTransform(scrollYProgress, [0.25, 1], ["10%", "-100%"]);
-    const y = useTransform(endScroll, [0, 1], ["0%", "90%"]);
+    const y = useTransform(endScroll, [0, 1], ["0%", "70%"]);
     return (
-        <div ref={targetRef} className="relative h-full">
+        <div ref={targetRef} className={cn("relative h-full", className)}>
             <motion.div
                 style={{ y }}
                 className="gap-sm sticky top-[30%] flex flex-col overflow-hidden"
