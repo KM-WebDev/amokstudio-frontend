@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { useScroll, useTransform } from "motion/react";
 import { motion } from "motion/react";
 import { ReactNode, useRef } from "react";
 
@@ -23,9 +23,12 @@ export default function HorizontalScrollCarousel({
         offset: ["end end", "end start"],
     });
 
-    useMotionValueEvent(endScroll, "change", (l) => console.log(l));
-
-    const x = useTransform(scrollYProgress, [0.15, 0.8], ["0%", "-100%"]);
+    const scale = useTransform(
+        scrollYProgress,
+        [0.2, 0.3, 0.7, 0.8],
+        [0.8, 1, 1, 0.8]
+    );
+    const x = useTransform(scrollYProgress, [0.25, 0.8], ["0%", "-100%"]);
     const y = useTransform(endScroll, [0, 1], ["0%", "90%"]);
     return (
         <div ref={targetRef} className="relative h-full">
@@ -35,7 +38,7 @@ export default function HorizontalScrollCarousel({
             >
                 {title}
                 <motion.div
-                    style={{ x }}
+                    style={{ x, scale }}
                     className="inline-flex w-fit justify-start gap-4"
                 >
                     {children}

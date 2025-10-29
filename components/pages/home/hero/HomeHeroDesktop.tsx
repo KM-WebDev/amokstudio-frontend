@@ -15,7 +15,7 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
         <HeroClient className={className}>
             {/* -z-100 */}
             <div className="relative">
-                <div className="pointer-events-none relative h-[150vh] overflow-hidden lg:h-[300vh]">
+                <div className="pointer-events-none relative h-[200vh] overflow-hidden">
                     <ParticlesLazy
                         particleColors={["#fec7da", "#ca010b"]}
                         particleCount={180}
