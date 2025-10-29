@@ -33,7 +33,7 @@ export default function Button({
     const className =
         "group relative flex cursor-pointer items-center justify-center gap-4 rounded-4xl px-5 py-2 text-base font-medium transition-all duration-200 ";
 
-    const combinedClasses = cn(passedClassName, variants[variant], className);
+    const combinedClasses = cn(variants[variant], className, passedClassName);
 
     if (as === "link" && href) {
         return (

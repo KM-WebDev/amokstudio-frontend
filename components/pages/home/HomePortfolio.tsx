@@ -2,10 +2,9 @@ import Heading from "@/components/base/Heading";
 import Section from "@/components/base/Section";
 import SectionHeading from "@/components/base/SectionHeading";
 import HorizontalScrollCarousel from "@/components/thirdparty/hover/HorizontalScrollCarousel";
-import Masonry from "@/components/thirdparty/reactbits/Masonry";
 import Image from "next/image";
-import { Text } from "hast";
-import Button from "@/components/ui/Button";
+
+import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 
 export default function HomePortfolio() {
     const cards = [
@@ -61,26 +60,24 @@ export default function HomePortfolio() {
             <Section.Content className="z-100 h-[300vh] w-full">
                 <HorizontalScrollCarousel
                     title={
-                        <SectionHeading
-                            heading="Moje projekty"
-                            number="03"
-                            text="Zobacz moje realizacje"
-                        />
+                        <div className="gap-sm relative flex flex-col items-center">
+                            <SectionHeading
+                                heading="Portfolio"
+                                number="03"
+                                text="Zobacz moje realizacje"
+                            />
+                            <ButtonWithArrow
+                                text="Zobacz wszystkie"
+                                variant="secondary"
+                                className="w-fit"
+                            />
+                        </div>
                     }
                 >
                     {cards.map((card) => (
                         <Card key={card.id} card={card} />
                     ))}
                 </HorizontalScrollCarousel>
-                <div className="gap-sm flex flex-col items-center">
-                    <Heading styling="h3" text="Zobacz wszystkie moje prace" />
-                    <Button
-                        text="Zobacz Więcej"
-                        as="link"
-                        href="/portfolio"
-                        className="w-fit justify-center"
-                    />
-                </div>
             </Section.Content>
         </Section>
     );

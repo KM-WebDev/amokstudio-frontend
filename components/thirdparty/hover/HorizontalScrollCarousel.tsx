@@ -15,7 +15,7 @@ export default function HorizontalScrollCarousel({
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
-        offset: ["start end", "end start"],
+        offset: ["start end", "end end"],
     });
 
     const { scrollYProgress: endScroll } = useScroll({
@@ -25,16 +25,16 @@ export default function HorizontalScrollCarousel({
 
     const scale = useTransform(
         scrollYProgress,
-        [0.2, 0.3, 0.7, 0.8],
+        [0.2, 0.3, 0.9, 1],
         [0.8, 1, 1, 0.8]
     );
-    const x = useTransform(scrollYProgress, [0.25, 0.8], ["0%", "-100%"]);
+    const x = useTransform(scrollYProgress, [0.25, 1], ["10%", "-100%"]);
     const y = useTransform(endScroll, [0, 1], ["0%", "90%"]);
     return (
         <div ref={targetRef} className="relative h-full">
             <motion.div
                 style={{ y }}
-                className="gap-md sticky top-[30%] flex flex-col overflow-hidden"
+                className="gap-sm sticky top-[30%] flex flex-col overflow-hidden"
             >
                 {title}
                 <motion.div
