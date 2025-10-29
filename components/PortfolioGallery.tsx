@@ -27,7 +27,7 @@ const components: PortableTextComponents = {
     block: {
         normal: ({ children }) => {
             return (
-                <p className="text-clr-brand-red/90 text-lg wrap-break-word uppercase">
+                <p className="text-clr-brand-rose-dark text-lg wrap-break-word uppercase">
                     {children}
                 </p>
             );
@@ -49,7 +49,7 @@ export default function PortfolioGallery({
                         Portfolio
                     </Heading>
 
-                    <p className="mt-4 text-center text-zinc-600">
+                    <p className="text-center text-zinc-600">
                         Lorem ipsum dolor sit amet consectetur, adipisicing
                         elit. Nostrum quam voluptatibus.
                     </p>
