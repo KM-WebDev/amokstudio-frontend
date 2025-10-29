@@ -1,0 +1,113 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * sofia-pro-soft:
+ *   - http://typekit.com/eulas/00000000000000007735a146
+ *   - http://typekit.com/eulas/00000000000000007735a147
+ *   - http://typekit.com/eulas/00000000000000007735a149
+ *   - http://typekit.com/eulas/00000000000000007735a14f
+ *   - http://typekit.com/eulas/00000000000000007735a154
+ *   - http://typekit.com/eulas/00000000000000007735a157
+ *
+ * © 2009-2025 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2025-10-28 17:48:42 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=kgi1rtg&ht=tk&f=24536.24553.24554.24556.24558.24559&a=60062580&app=typekit&e=css");
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/8bb068/00000000000000007735a146/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n5&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/8bb068/00000000000000007735a146/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n5&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/8bb068/00000000000000007735a146/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n5&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/f5916e/00000000000000007735a147/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n7&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/f5916e/00000000000000007735a147/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n7&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/f5916e/00000000000000007735a147/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n7&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/ca4740/00000000000000007735a149/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i7&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/ca4740/00000000000000007735a149/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i7&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/ca4740/00000000000000007735a149/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i7&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: italic;
+    font-weight: 700;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/ef39b0/00000000000000007735a14f/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n3&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/ef39b0/00000000000000007735a14f/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n3&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/ef39b0/00000000000000007735a14f/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n3&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: normal;
+    font-weight: 300;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/707483/00000000000000007735a154/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n4&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/707483/00000000000000007735a154/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n4&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/707483/00000000000000007735a154/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=n4&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "sofia-pro-soft";
+    src:
+        url("https://use.typekit.net/af/9a853f/00000000000000007735a157/31/l?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i4&v=3")
+            format("woff2"),
+        url("https://use.typekit.net/af/9a853f/00000000000000007735a157/31/d?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i4&v=3")
+            format("woff"),
+        url("https://use.typekit.net/af/9a853f/00000000000000007735a157/31/a?primer=d2a98c439c93d53032a2def08f45a19916c75722a6ca2e6f6ecd7545af331879&fvd=i4&v=3")
+            format("opentype");
+    font-display: optional;
+    font-style: italic;
+    font-weight: 400;
+    font-stretch: normal;
+}
+
+.tk-sofia-pro-soft {
+    font-family: "sofia-pro-soft", sans-serif;
+}
