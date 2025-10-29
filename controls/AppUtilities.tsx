@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SanityLive } from "@/services/sanity/client";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
+import { sanityDev } from "@/services/sanity/env";
 
 export default async function AppUtilities() {
     return (
@@ -17,7 +18,7 @@ export default async function AppUtilities() {
             />
             <Analytics />
             <SpeedInsights />
-            <SanityLive />
+            {sanityDev === "1" && <SanityLive />}
             {(await draftMode()).isEnabled && <VisualEditing />}
         </>
     );
