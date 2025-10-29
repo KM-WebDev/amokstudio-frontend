@@ -1,5 +1,7 @@
 import { defineQuery } from "next-sanity";
 
+// Query Cheat Sheet: https://www.sanity.io/docs/content-lake/query-cheat-sheet
+
 export const PORTFOLIO_HOMEPAGE_QUERY =
     defineQuery(`*[_type == "portfolio" && showOnHomepage == true] | order(homepageOrder asc) {
     _id, title, mainImage, description
