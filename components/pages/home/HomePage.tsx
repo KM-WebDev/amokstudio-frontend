@@ -1,6 +1,7 @@
 import { HomeAbout } from "./HomeAbout";
 import HomeBento from "./HomeBento";
 import HomePortfolio from "./HomePortfolio";
+import HomeReviews from "./HomeReviews";
 import HomeHero from "./hero/HomeHero";
 
 export default async function HomePage() {
@@ -11,6 +12,7 @@ export default async function HomePage() {
                 <HomeBento />
                 <HomeAbout />
                 <HomePortfolio />
+                <HomeReviews />
                 <div className="h-screen" />
             </div>
         </>
