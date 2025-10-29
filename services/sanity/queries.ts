@@ -7,7 +7,8 @@ export const PORTFOLIO_HOMEPAGE_QUERY =
     _id, title, mainImage, description
 }`);
 
-export const PORTFOLIO_ALL_QUERY = defineQuery(`*[_type == "portfolio"]{
+export const PORTFOLIO_ALL_QUERY =
+    defineQuery(`*[_type == "portfolio"] | order(orderRank) {
     _id, title, mainImage, description
 }`);
 
