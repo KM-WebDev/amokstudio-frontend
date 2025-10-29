@@ -103,10 +103,10 @@ function MobileCarousel({ cards, className, Top }: DesktopCarouselProps) {
                 <Carousel
                     options={{ loop: true }}
                     className={cn(
-                        "gap-md flex w-full flex-col",
+                        "gap-sm flex w-full flex-col",
                         "[--slide-size:75%]"
                     )}
-                    itemClassName="opacity-25! transition-opacity"
+                    itemClassName="opacity-25! transition-opacity duration-300"
                     activeItemClassName="opacity-100!"
                     slides={cards.map((card) => {
                         return (
@@ -137,7 +137,7 @@ function MobileCarousel({ cards, className, Top }: DesktopCarouselProps) {
                     })}
                 >
                     <div className="z-10 flex flex-col items-center justify-center gap-10">
-                        <div className="flex items-center justify-center gap-10 text-2xl">
+                        <div className="flex items-center justify-center gap-8 text-2xl">
                             <CarouselPrevButton>
                                 <IoIosArrowBack />
                             </CarouselPrevButton>
@@ -201,14 +201,23 @@ const Card = ({ card, className }: { card: Card; className?: string }) => {
                 sizes="300px"
                 className="object-cover transition-transform group-hover:scale-105"
             />
-            <div className="absolute inset-0 grid place-content-center">
-                <Heading
-                    className="z-100 text-white"
-                    semantic="h3"
-                    text={card.title}
-                />
+            <div className="p-xs absolute inset-0 z-100 flex flex-col justify-end">
+                <p className="text-clr-bg-extra-light text-lg font-medium">
+                    Lorem ipsum dolor sit.
+                </p>
+                <div className="hidden scale-0 transition-transform group-hover:block group-hover:scale-100">
+                    <p className="text-clr-bg-dark">
+                        Lorem ipsum dolor, sit amet consecte adipisicng elit.
+                        Assumenda, amet?
+                    </p>
+                    <ButtonWithArrow
+                        text="Zobacz wszystkie"
+                        variant="secondary"
+                        className="w-fit px-0 text-white"
+                    />
+                </div>
             </div>
-            <div className="bg-clr-brand-red/20 group-hover:bg-clr-brand-red/40 absolute inset-0 z-10 transition-colors" />
+            <div className="from-clr-brand-red/60 via-clr-brand-red/10 to-clr-brand-red/5 group-hover:bg-clr-brand-red/40 absolute inset-0 z-10 bg-linear-0 transition-colors group-hover:backdrop-blur-xs" />
         </div>
     );
 };
