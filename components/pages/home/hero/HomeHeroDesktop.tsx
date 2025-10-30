@@ -1,4 +1,3 @@
-import { TextEffect } from "@/components/thirdparty/motion-primitives/TextEffect";
 import Image from "next/image";
 import HeroClient, {
     HeroBgImgContainer,
@@ -6,7 +5,6 @@ import HeroClient, {
     HeroScrollArrowsContainer,
 } from "./HomeHero.client";
 import ScrollArrows from "@/components/ui/ScrollArrows";
-// import Particles from "@/components/thirdparty/reactbits/Particles";
 import { BasicComponentProps } from "@/lib/types/global";
 import { ParticlesLazy } from "../../../LazyParticles";
 
@@ -35,7 +33,7 @@ export default function HomeHeroDesktop({ className }: BasicComponentProps) {
                         <Image
                             src={"/logo-red.svg"}
                             fill
-                            sizes="100vw"
+                            sizes="30vw"
                             className="relative h-full object-contain px-5 pb-5 lg:px-[50px]"
                             alt="logo"
                         />

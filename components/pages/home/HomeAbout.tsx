@@ -20,6 +20,7 @@ export function HomeAbout() {
                             src={"/anastazja.jpg"}
                             alt="kobieta robiąca zdjęcie telefon"
                             fill
+                            sizes="400px"
                             className="rounded-2xl object-cover shadow-lg"
                         />
                     </div>

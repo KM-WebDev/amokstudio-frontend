@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils/cn";
 import AutoScroll, { AutoScrollOptionsType } from "embla-carousel-auto-scroll";
 import { useAutoScroll } from "@/components/ui/Carousel/EmblaCarouselAutoScroll";
 import { useDotButton } from "./EmblaCarouselDotButton";
-import { BasicComponentProps } from "@/lib/types/global";
 
 interface CarouselContext {
     emblaApi: EmblaCarouselType | undefined;
@@ -169,7 +168,7 @@ export function Carousel({
                                     "min-w-0",
                                     "transform-[translate3d(0,0,0)]",
                                     "flex-[0_0_var(--slide-size)]",
-                                    "pl-[var(--slide-spacing)]",
+                                    "pl-(--slide-spacing)",
                                     itemClassName,
                                     selectedIndex === index
                                         ? activeItemClassName
@@ -257,7 +256,7 @@ export function CarouselAutoplayProgress() {
             )}
         >
             <div
-                className={cn("embla__progress__bar", "!bg-red-500")}
+                className={cn("embla__progress__bar", "bg-red-500")}
                 ref={progressNode}
             />
         </div>
