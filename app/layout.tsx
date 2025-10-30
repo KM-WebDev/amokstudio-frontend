@@ -6,6 +6,7 @@ import Footer from "@/components/base/Footer";
 
 import NavigationControls from "@/controls/context/NavigationControls";
 import { fetchAllSocials } from "@/services/sanity/fetch";
+import BreakpointProvider from "@/controls/context/BreakpointProvider";
 // import ScrollableArea from "@/components/base/ScrollableArea";
 
 export default async function RootLayout({
@@ -25,11 +26,13 @@ export default async function RootLayout({
             </head>
             <body className="overscroll-none">
                 {/* <GlobalControls> */}
-                <NavigationControls>
-                    <Header socials={socials} />
-                    <Main>{children}</Main>
-                    <Footer socials={socials} />
-                </NavigationControls>
+                <BreakpointProvider>
+                    <NavigationControls>
+                        <Header socials={socials} />
+                        <Main>{children}</Main>
+                        <Footer socials={socials} />
+                    </NavigationControls>
+                </BreakpointProvider>
 
                 {/* </GlobalControls> */}
                 <AppUtilities />

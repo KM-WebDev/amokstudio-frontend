@@ -1,18 +1,10 @@
+import { BREAKPOINT_VALUES } from "@/lib/constants/global";
+import { ScreenBreakpoint } from "@/lib/types/global";
 import { useEffect, useState } from "react";
-
-type ScreenBreakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
-const screenBreakpoints: Record<ScreenBreakpoint, number> = {
-    base: 0,
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    "2xl": 1536,
-};
 
 function getBreakpoint(size: number): ScreenBreakpoint {
     for (const [breakpoint, value] of Object.entries(
-        screenBreakpoints
+        BREAKPOINT_VALUES
     ).reverse()) {
         if (value <= size) return breakpoint as ScreenBreakpoint;
     }
@@ -37,5 +29,5 @@ export function useScreenSize(target?: Element) {
         return () => observer.disconnect();
     }, [node]);
 
-    return { breakpoint };
+    return { breakpoint, breakpointValue: BREAKPOINT_VALUES[breakpoint] };
 }

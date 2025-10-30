@@ -1,4 +1,3 @@
-import Heading from "@/components/base/Heading";
 import Section from "@/components/base/Section";
 import SectionHeading from "@/components/base/SectionHeading";
 import HorizontalScrollCarousel from "@/components/thirdparty/hover/HorizontalScrollCarousel";
@@ -14,63 +13,63 @@ import {
     CarouselNextButton,
     CarouselPrevButton,
 } from "@/components/ui/Carousel/Carousel";
+import Breakpoint from "@/controls/Breakpoint";
+
+const cards = [
+    {
+        url: "/anastazja.jpg",
+        title: "Title 1",
+        id: 1,
+    },
+    {
+        url: "/book-1.png",
+        title: "Title 2",
+        id: 2,
+    },
+    {
+        url: "/book-2.png",
+        title: "Title 3",
+        id: 3,
+    },
+    {
+        url: "/kebab-lokal.jpg",
+        title: "Title 4",
+        id: 4,
+    },
+    {
+        url: "/kebab-tshirt.png",
+        title: "Title 5",
+        id: 5,
+    },
+    {
+        url: "/kebab-lokal.jpg",
+        title: "Title 4",
+        id: 6,
+    },
+    {
+        url: "/kebab-tshirt.png",
+        title: "Title 5",
+        id: 7,
+    },
+    {
+        url: "/kebab-lokal.jpg",
+        title: "Title 4",
+        id: 8,
+    },
+];
 
 export default function HomePortfolio() {
-    const cards = [
-        {
-            url: "/anastazja.jpg",
-            title: "Title 1",
-            id: 1,
-        },
-        {
-            url: "/book-1.png",
-            title: "Title 2",
-            id: 2,
-        },
-        {
-            url: "/book-2.png",
-            title: "Title 3",
-            id: 3,
-        },
-        {
-            url: "/kebab-lokal.jpg",
-            title: "Title 4",
-            id: 4,
-        },
-        {
-            url: "/kebab-tshirt.png",
-            title: "Title 5",
-            id: 5,
-        },
-        {
-            url: "/kebab-lokal.jpg",
-            title: "Title 4",
-            id: 6,
-        },
-        {
-            url: "/kebab-tshirt.png",
-            title: "Title 5",
-            id: 7,
-        },
-        {
-            url: "/kebab-lokal.jpg",
-            title: "Title 4",
-            id: 8,
-        },
-    ];
-
     const Top = <SectionTop />;
 
     return (
         <Section className="bg-clr-bg-dark">
             <Section.Content className="z-100 w-full">
-                <DesktopCarousel
-                    Top={Top}
-                    cards={cards}
-                    className="max-lg:hidden"
-                />
-                {/* <MobileGrid Top={Top} cards={cards} className="lg:hidden" /> */}
-                <MobileCarousel cards={cards} Top={Top} className="lg:hidden" />
+                <Breakpoint condition="more" breakpoint="lg">
+                    <DesktopCarousel Top={Top} cards={cards} />
+                </Breakpoint>
+                <Breakpoint condition="less" breakpoint="lg" fallback>
+                    <MobileCarousel cards={cards} Top={Top} />
+                </Breakpoint>
             </Section.Content>
         </Section>
     );
@@ -142,7 +141,7 @@ function MobileCarousel({ cards, className, Top }: DesktopCarouselProps) {
                                 <IoIosArrowBack />
                             </CarouselPrevButton>
                             <CarouselDots
-                                className="gap-0.5"
+                                className="dgap-0.5"
                                 dotClassName="w-3 h-3 bg-clr-text-muted border-2 border-clr-text-muted"
                                 activeDotClassName="bg-clr-bg"
                             />
