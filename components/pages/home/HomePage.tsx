@@ -3,7 +3,8 @@ import HomeBento from "./HomeBento";
 import { HomeFAQ } from "./HomeFAQ";
 import HomePortfolio from "./HomePortfolio";
 import HomeReviews from "./HomeReviews";
-import HomeHero from "./hero/HomeHero";
+import HomeHero from "./HomeHero";
+import HomeFeature from "./HomeFeature";
 
 export default async function HomePage() {
     return (
@@ -13,6 +14,7 @@ export default async function HomePage() {
                 <HomeBento />
                 <HomeAbout />
                 <HomePortfolio />
+                <HomeFeature />
                 <HomeReviews />
                 <HomeFAQ />
                 <div className="h-screen" />

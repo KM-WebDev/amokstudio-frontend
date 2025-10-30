@@ -1,11 +1,11 @@
 import Image from "next/image";
 import ScrollArrows from "@/components/ui/ScrollArrows";
-import { ParticlesLazy } from "../../../LazyParticles";
+import { ParticlesLazy } from "../../LazyParticles";
 import { cn } from "@/lib/utils/cn";
 
-export default function HomeHeroDesktop() {
+export default function HomeHero() {
     return (
-        <div className="relative z-0 flex h-[100vh] flex-col items-center justify-center lg:h-[200vh]">
+        <div className="relative z-0 flex h-screen flex-col items-center justify-center lg:h-[200vh]">
             <Background />
             <div className="flex h-full w-full flex-col items-center pt-[30svh]">
                 <h1 className="z-100 flex w-full max-w-2xl shrink flex-col items-center justify-center gap-3 px-4 text-center text-3xl font-semibold">

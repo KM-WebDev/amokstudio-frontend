@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function HomeBento() {
     return (
         <Section className="bg-zinc-200">
-            <Section.Content className="flex max-w-[1200px] flex-col items-center">
+            <Section.Content className="flex flex-col items-center">
                 <div className="mx-auto flex max-w-2xl flex-col lg:max-w-7xl">
                     <SectionHeading
                         number="01"
@@ -40,12 +40,7 @@ interface TextBoxProps extends BasicComponentProps {
 }
 function TextBox({ className, children, title }: TextBoxProps) {
     return (
-        <div
-            className={cn(
-                "flex flex-col gap-2 max-lg:text-center lg:px-2",
-                className
-            )}
-        >
+        <div className={cn("flex flex-col gap-2 lg:px-2", className)}>
             <h3 className="text-xl font-medium tracking-tight text-zinc-900">
                 {title}
             </h3>

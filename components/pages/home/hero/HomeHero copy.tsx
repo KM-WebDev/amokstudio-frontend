@@ -1,4 +1,4 @@
-import HomeHeroDesktop from "./HomeHeroDesktop";
+import HomeHeroDesktop from "../HomeHero";
 
 export default function Hero() {
     return (
