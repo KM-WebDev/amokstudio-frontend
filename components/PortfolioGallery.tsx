@@ -16,7 +16,7 @@ interface PortfolioDisplayEntry {
     description: PortableTextBlock[];
 }
 
-type PortfolioDisplayEntries = PortfolioDisplayEntry[];
+export type PortfolioDisplayEntries = PortfolioDisplayEntry[];
 
 interface PortfolioDisplayProps {
     portfolios: PortfolioDisplayEntries;

@@ -1,4 +1,4 @@
-import { sanityFetch } from "./client";
+import { safeSanityFetch } from "./client";
 import { SOCIALS_QUERY } from "./queries";
 
 type SocialData = {
@@ -7,11 +7,11 @@ type SocialData = {
 };
 
 export async function fetchAllSocials() {
-    const { data } = await sanityFetch({
-        query: SOCIALS_QUERY,
-    });
+    const socialData = await safeSanityFetch<SocialData[]>(SOCIALS_QUERY);
 
-    const socialData: SocialData[] = data;
+    if (!socialData) {
+        return [];
+    }
 
     return socialData.flatMap((data) => data.socials);
 }

@@ -1,13 +1,19 @@
-interface SanityRef {
+type SanityRef = {
     _ref: string;
     _type: "reference";
-}
+};
 
-interface SanityImage {
+type SanityImage = {
     _type: "image";
     asset: SanityRef;
-}
+};
 
-interface SanityIdObject {
+type SanityIdObject = {
     _id: String;
-}
+};
+
+type SanityFetchData = {
+    data: any;
+    sourceMap: ContentSourceMap | null;
+    tags: string[];
+};

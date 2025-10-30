@@ -1,11 +1,16 @@
-import PortfolioGallery from "@/components/PortfolioGallery";
-import { sanityFetch } from "@/services/sanity/client";
+import PortfolioGallery, {
+    PortfolioDisplayEntries,
+} from "@/components/PortfolioGallery";
+import { safeSanityFetch } from "@/services/sanity/client";
 import { PORTFOLIO_ALL_QUERY } from "@/services/sanity/queries";
 
 export default async function Portfolio() {
-    const { data } = await sanityFetch({
-        query: PORTFOLIO_ALL_QUERY,
-    });
+    const portfolios =
+        await safeSanityFetch<PortfolioDisplayEntries>(PORTFOLIO_ALL_QUERY);
 
-    return <PortfolioGallery portfolios={data} />;
+    if (!portfolios) {
+        return;
+    }
+
+    return <PortfolioGallery portfolios={portfolios} />;
 }
