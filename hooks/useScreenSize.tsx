@@ -12,7 +12,6 @@ function getBreakpoint(size: number): ScreenBreakpoint {
 }
 
 export function useScreenSize(target?: Element) {
-    const node = target ? target : document.body;
     const [breakpoint, setBreakpoint] = useState<ScreenBreakpoint>("base");
 
     const handleNewDimensions = (target: Element) => {
@@ -22,12 +21,13 @@ export function useScreenSize(target?: Element) {
     };
 
     useEffect(() => {
+        const node = target ? target : document.body;
         const observer = new ResizeObserver(([entry]) => {
             handleNewDimensions(entry.target);
         });
         observer.observe(node);
         return () => observer.disconnect();
-    }, [node]);
+    }, [target]);
 
     return { breakpoint, breakpointValue: BREAKPOINT_VALUES[breakpoint] };
 }

@@ -45,13 +45,3 @@ export default function HomeHeroMobile({ className }: BasicComponentProps) {
         </div>
     );
 }
-
-// function HeroHeading() {
-//     return (
-//         <h1 className="pointer-events-auto flex max-w-2xl flex-col justify-center gap-3 px-4 text-3xl font-semibold max-lg:order-1 max-lg:text-center lg:gap-3 lg:text-7xl">
-//                 Kreatywne studio designu w Trójmieście
-//         </h1>
-//             <TextEffect per="char" delay={1} preset="blur">
-//             </TextEffect>
-//     );
-// }

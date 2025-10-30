@@ -1,7 +1,10 @@
 "use client";
 
+import { BreakpointContext } from "@/controls/context/BreakpointProvider";
 import { NavigationControlsContext } from "@/controls/context/NavigationControls";
+import { useScreenSize } from "@/hooks/useScreenSize";
 import { useThrottledMotionValue } from "@/hooks/useThrottledMotionValue";
+import { BREAKPOINT_VALUES } from "@/lib/constants/global";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import { motionValue, MotionValue } from "motion";
@@ -105,6 +108,9 @@ export function HeroHeadingContainer({
     const controls = useAnimation();
     const visibleRef = useRef<boolean>(false);
     const THRESH = 0.25;
+    const { breakpointValue } = useContext(BreakpointContext);
+    const target = BREAKPOINT_VALUES["lg"];
+    const isMobile = breakpointValue < target;
 
     useMotionValueEvent(scrollProgress, "change", (latest: number) => {
         const shouldBeVisible = latest <= THRESH;
@@ -116,8 +122,6 @@ export function HeroHeadingContainer({
         }
     });
 
-    console.log("HeroHeading render");
-
     // initial mount only
     useEffect(() => {
         if (typeof window !== "undefined" && window.scrollY === 0) {
@@ -127,11 +131,17 @@ export function HeroHeadingContainer({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // const attributes = !isMobile
+    //     ? {
+    //           variants: HeadingVariants,
+    //           initial: "hidden",
+    //           animate: controls,
+    //       }
+    //     : {};
+
     return (
         <motion.div
-            variants={HeadingVariants}
-            initial="hidden"
-            animate={controls}
+            // {...attributes}
             className={cn("will-change-transform", className)}
         >
             {children}
@@ -149,6 +159,9 @@ export function HeroBgImgContainer({
 }: HeroBgImgContainerProps) {
     const { scrollProgress } = useContext(HeroContext);
     console.log("HeroBgImg render");
+    const { breakpointValue } = useContext(BreakpointContext);
+    const target = BREAKPOINT_VALUES["lg"];
+    const isMobile = breakpointValue < target;
 
     const scale = useTransform(scrollProgress, [0.1, 0.7], [0.6, 1]);
     const opacity = useTransform(scrollProgress, [0.9, 0.98], [1, 0]);
@@ -159,65 +172,27 @@ export function HeroBgImgContainer({
     );
     const transformTemplate = useMotionTemplate`translateY(${top}) scale(${scale})`;
 
+    // const attributes = !isMobile
+    //     ? {
+    //           style: {
+    //               transform: transformTemplate,
+    //               willChange: "transform, opacity",
+    //               opacity,
+    //           },
+    //       }
+    //     : {};
     return (
         <div className={cn("", className)}>
             <motion.div className="pointer-events-none absolute inset-0 z-100 w-full" />
 
             <motion.div
                 className="absolute right-0 left-0 h-full w-full translate-y-[-50%]"
-                style={{
-                    transform: transformTemplate,
-                    willChange: "transform, opacity",
-                    opacity,
-                }}
+                // {...attributes}
                 aria-hidden
             >
                 {children}
             </motion.div>
         </div>
-    );
-}
-
-const SubtitleVariants = {
-    hidden: {
-        opacity: 0,
-        transition: { duration: 0.12 },
-    },
-    visible: {
-        opacity: 1,
-        transition: { duration: 0.18 },
-    },
-};
-
-export function HeroSubtitleContainer({
-    children,
-    className,
-}: BasicComponentProps) {
-    const { scrollProgress } = useContext(HeroContext);
-    const controls = useAnimation();
-    const visibleRef = useRef(false);
-
-    const V_MIN = 0.7;
-    const V_MAX = 0.88;
-
-    useMotionValueEvent(scrollProgress, "change", (latest: number) => {
-        const nowVisible = latest >= V_MIN && latest <= V_MAX;
-        if (nowVisible !== visibleRef.current) {
-            visibleRef.current = nowVisible;
-            controls.start(nowVisible ? "visible" : "hidden");
-        }
-    });
-
-    return (
-        <motion.div
-            variants={SubtitleVariants}
-            initial="hidden"
-            animate={controls}
-            transition={{ duration: 0.12 }}
-            className={cn("will-change-transform", className)}
-        >
-            {children}
-        </motion.div>
     );
 }
 
