@@ -113,7 +113,7 @@ function SectionTop({ className }: BasicComponentProps) {
                 number="03"
                 text="Zobacz moje realizacje"
             />
-            <p className="text-clr-text-muted text-center">
+            <p className="text-clr-text-muted md:text-center">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
                 quo vel eos quis ullam omnis!
             </p>

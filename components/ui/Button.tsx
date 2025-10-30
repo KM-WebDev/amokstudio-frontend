@@ -31,7 +31,7 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const className =
-        "group relative flex cursor-pointer items-center justify-center gap-4 rounded-4xl px-5 py-2 text-base font-medium transition-all duration-200 ";
+        "group/button relative flex cursor-pointer items-center justify-center gap-4 rounded-4xl px-5 py-2 text-base font-medium transition-all duration-200 ";
 
     const combinedClasses = cn(variants[variant], className, passedClassName);
 

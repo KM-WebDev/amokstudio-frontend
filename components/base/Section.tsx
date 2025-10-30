@@ -71,10 +71,10 @@ function Content({
     gapSize = "md",
 }: ContentProps) {
     return (
-        <div className="flex w-full flex-col items-center max-lg:max-w-3xl">
+        <div className="flex w-full flex-col items-center">
             <div
                 className={cn(
-                    "max-xs:px-2",
+                    "max-xs:px-4",
                     "container flex flex-col px-4 xl:max-w-[1200px]",
                     "lg:px-5",
                     "xl:px-0",

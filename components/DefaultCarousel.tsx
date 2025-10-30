@@ -36,7 +36,7 @@ export default function DefaultCarousel({
                     </CarouselPrevButton>
                     <CarouselDots
                         className="gap-0.5"
-                        dotClassName="w-3 h-3 bg-clr-text-muted border-2 border-clr-text-muted"
+                        dotClassName="w-3 cursor-pointer h-3 bg-clr-text-muted border-2 border-clr-text-muted"
                         activeDotClassName="bg-clr-bg"
                     />
                     <CarouselNextButton>
