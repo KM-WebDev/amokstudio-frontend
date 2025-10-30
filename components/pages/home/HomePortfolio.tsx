@@ -2,18 +2,13 @@ import Section from "@/components/base/Section";
 import SectionHeading from "@/components/base/SectionHeading";
 import HorizontalScrollCarousel from "@/components/thirdparty/hover/HorizontalScrollCarousel";
 import Image from "next/image";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import ButtonWithArrow from "@/components/ui/ButtonWithArrow";
 import { BasicComponentProps } from "@/lib/types/global";
 import { cn } from "@/lib/utils/cn";
 import { ReactNode } from "react";
-import {
-    Carousel,
-    CarouselDots,
-    CarouselNextButton,
-    CarouselPrevButton,
-} from "@/components/ui/Carousel/Carousel";
+
 import Breakpoint from "@/controls/Breakpoint";
+import DefaultCarousel from "@/components/DefaultCarousel";
 
 const cards = [
     {
@@ -61,96 +56,45 @@ const cards = [
 export default function HomePortfolio() {
     const Top = <SectionTop />;
 
+    const Cards = cards.map((card) => <Card key={card.id} card={card} />);
+
     return (
         <Section className="bg-clr-bg-dark">
             <Section.Content className="z-100 w-full">
                 <Breakpoint condition="more" breakpoint="lg">
-                    <DesktopCarousel Top={Top} cards={cards} />
+                    <DesktopCarousel Top={Top} Cards={Cards} />
                 </Breakpoint>
                 <Breakpoint condition="less" breakpoint="lg" fallback>
-                    <MobileCarousel cards={cards} Top={Top} />
+                    <MobileCarousel Cards={Cards} Top={Top} />
                 </Breakpoint>
             </Section.Content>
         </Section>
     );
 }
 
-interface DesktopCarouselProps {
-    cards: Card[];
+interface CarouselProps {
+    Cards: ReactNode[];
     className?: string;
     Top: ReactNode;
 }
 
-function DesktopCarousel({ Top, cards, className }: DesktopCarouselProps) {
+function DesktopCarousel({ Top, Cards, className }: CarouselProps) {
     return (
         <HorizontalScrollCarousel
             className={cn("h-[300vh] w-full", className)}
             title={Top}
         >
-            {cards.map((card) => (
-                <Card key={card.id} card={card} />
-            ))}
+            {Cards}
         </HorizontalScrollCarousel>
     );
 }
 
-function MobileCarousel({ cards, className, Top }: DesktopCarouselProps) {
+function MobileCarousel({ Cards, className, Top }: CarouselProps) {
     return (
         <div className={cn("gap-sm flex h-fit w-full flex-col", className)}>
             {Top}
             <div className="relative w-full">
-                <Carousel
-                    options={{ loop: true }}
-                    className={cn(
-                        "gap-sm flex w-full flex-col",
-                        "[--slide-size:75%]"
-                    )}
-                    itemClassName="opacity-25! transition-opacity duration-300"
-                    activeItemClassName="opacity-100!"
-                    slides={cards.map((card) => {
-                        return (
-                            <div
-                                key={card.id}
-                                className="gap-xs flex h-fit w-full flex-col"
-                            >
-                                <div className="relative aspect-square shrink-0">
-                                    <Image
-                                        src={card.url}
-                                        alt=""
-                                        fill
-                                        sizes="300px"
-                                        className="rounded-2xl object-cover"
-                                    />
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <p className="text-lg font-medium">
-                                        Lorem ipsum dolor sit.
-                                    </p>
-                                    <p className="text-clr-text-muted">
-                                        Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing elit. Assumenda, amet?
-                                    </p>
-                                </div>
-                            </div>
-                        );
-                    })}
-                >
-                    <div className="z-10 flex flex-col items-center justify-center gap-10">
-                        <div className="flex items-center justify-center gap-8 text-2xl">
-                            <CarouselPrevButton>
-                                <IoIosArrowBack />
-                            </CarouselPrevButton>
-                            <CarouselDots
-                                className="dgap-0.5"
-                                dotClassName="w-3 h-3 bg-clr-text-muted border-2 border-clr-text-muted"
-                                activeDotClassName="bg-clr-bg"
-                            />
-                            <CarouselNextButton>
-                                <IoIosArrowForward />
-                            </CarouselNextButton>
-                        </div>
-                    </div>
-                </Carousel>
+                <DefaultCarousel slides={Cards} />
             </div>
         </div>
     );
@@ -189,71 +133,43 @@ const Card = ({ card, className }: { card: Card; className?: string }) => {
         <div
             key={card.id}
             className={cn(
-                "group relative aspect-square shrink-0 overflow-hidden rounded-2xl bg-neutral-200 lg:h-[300px] lg:w-[300px]",
+                "group relative shrink-0 cursor-pointer overflow-hidden lg:h-[300px] lg:w-[300px]",
                 className
             )}
         >
-            <Image
-                src={card.url}
-                alt=""
-                fill
-                sizes="300px"
-                className="object-cover transition-transform group-hover:scale-105"
-            />
-            <div className="p-xs absolute inset-0 z-100 flex flex-col justify-end">
-                <p className="text-clr-bg-extra-light text-lg font-medium">
+            <div className="relative aspect-square shrink-0 overflow-hidden rounded-2xl">
+                <Image
+                    src={card.url}
+                    alt=""
+                    fill
+                    sizes="300px"
+                    className="object-cover transition-transform lg:group-hover:scale-110"
+                />
+                <div
+                    className={cn(
+                        "absolute inset-0 z-10 bg-linear-0 transition-colors max-lg:hidden lg:group-hover:backdrop-blur-xs",
+                        "from-clr-brand-red/60 via-clr-brand-red/10 to-clr-brand-red/5",
+                        "lg:group-hover:from-clr-brand-red/80 lg:group-hover:via-clr-brand-red/50 lg:group-hover:to-clr-brand-red/30"
+                    )}
+                />
+            </div>
+
+            <div className="p-xs inset-0 z-100 flex flex-col justify-end lg:absolute">
+                <p className="lg:text-clr-bg-extra-light text-lg font-medium">
                     Lorem ipsum dolor sit.
                 </p>
-                <div className="hidden scale-0 transition-transform group-hover:block group-hover:scale-100">
-                    <p className="text-clr-bg-dark">
+                <div className="transition-transform lg:hidden lg:group-hover:block">
+                    <p className="lg:text-clr-bg-dark text-clr-text-muted">
                         Lorem ipsum dolor, sit amet consecte adipisicng elit.
                         Assumenda, amet?
                     </p>
                     <ButtonWithArrow
-                        text="Zobacz wszystkie"
+                        text="Sprawdź"
                         variant="secondary"
-                        className="w-fit px-0 text-white"
+                        className="w-fit max-w-[80%] px-0 lg:text-white"
                     />
                 </div>
             </div>
-            <div
-                className={cn(
-                    "absolute inset-0 z-10 bg-linear-0 transition-colors group-hover:backdrop-blur-xs",
-                    "from-clr-brand-red/60 via-clr-brand-red/10 to-clr-brand-red/5",
-                    "group-hover:from-clr-brand-red/80 group-hover:via-clr-brand-red/50 group-hover:to-clr-brand-red/30"
-                )}
-            />
         </div>
     );
 };
-
-// function MobileGrid({ Top, cards, className }: DesktopCarouselProps) {
-//     return (
-//         <div className={cn("gap-xs flex w-full flex-col", className)}>
-//             {Top}
-//             <div
-//                 className={cn(
-//                     "gap-xs grid grid-cols-1 justify-center sm:grid-cols-2"
-//                 )}
-//             >
-//                 {cards.map((card) => {
-//                     return (
-//                         <div key={card.id} className="h-fit w-fit">
-//                             <Card card={card} />
-//                             <p className="text-lg">Lorem ipsum dolor sit.</p>
-//                             <p className="text-clr-text-muted">
-//                                 Lorem ipsum dolor, sit amet consectetur
-//                                 adipisicing elit. Assumenda, amet?
-//                             </p>
-//                         </div>
-//                     );
-//                 })}
-//             </div>
-//             <ButtonWithArrow
-//                 text="Zobacz wszystkie"
-//                 variant="secondary"
-//                 className="mx-auto w-fit"
-//             />
-//         </div>
-//     );
-// }
