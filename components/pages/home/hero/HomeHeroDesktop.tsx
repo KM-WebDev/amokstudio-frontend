@@ -1,20 +1,18 @@
 import Image from "next/image";
-import { HeroScrollArrowsContainer } from "./HomeHero.client";
 import ScrollArrows from "@/components/ui/ScrollArrows";
-import { BasicComponentProps } from "@/lib/types/global";
 import { ParticlesLazy } from "../../../LazyParticles";
 import { cn } from "@/lib/utils/cn";
 
-export default function HomeHeroDesktop({ className }: BasicComponentProps) {
+export default function HomeHeroDesktop() {
     return (
-        <div className="relative flex h-[150vh] flex-col items-center justify-center lg:h-[200vh]">
+        <div className="relative z-0 flex h-[100vh] flex-col items-center justify-center lg:h-[200vh]">
             <Background />
             <div className="flex h-full w-full flex-col items-center pt-[30svh]">
                 <h1 className="z-100 flex w-full max-w-2xl shrink flex-col items-center justify-center gap-3 px-4 text-center text-3xl font-semibold">
-                    Kreatywne studio designu w Trójmieście źćęążó
+                    Kreatywne studio designu w Trójmieście
                 </h1>
                 <div className="pt-sm h-full w-full grow">
-                    <div className="sticky top-[30%]">
+                    <div className="top-[30%] lg:sticky">
                         <div className="relative h-30 w-full">
                             <Image
                                 src={"/logo-red.svg"}
@@ -39,7 +37,7 @@ function Background() {
     return (
         <div
             className={cn(
-                "pointer-events-none absolute inset-0 h-full overflow-hidden"
+                "pointer-events-none absolute inset-0 -z-10 h-full overflow-hidden"
             )}
         >
             <ParticlesLazy
