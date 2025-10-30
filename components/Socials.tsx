@@ -16,7 +16,7 @@ interface BrandIconProps {
 
 export default async function Socials({ socials, className }: SocialProps) {
     return (
-        <div className={cn("flex gap-2", className)}>
+        <div className={cn("flex gap-1", className)}>
             {socials.map((social, i) => (
                 <SocialButton key={i} link={social}>
                     <BrandIcon brand={getBrandFromUrl(social)} />
@@ -36,7 +36,7 @@ function SocialButton({ link, children }: SocialButtonProps) {
 
 function BrandIcon({ brand }: BrandIconProps) {
     return (
-        <div className="hover:text-clr-brand-red transition-colors duration-200">
+        <div className="hover:text-clr-brand-red p-1 transition-colors duration-200">
             <div
                 className="h-5 w-5"
                 style={{
