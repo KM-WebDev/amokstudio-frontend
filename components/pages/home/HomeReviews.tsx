@@ -12,7 +12,7 @@ export default function HomeReviews() {
             <Section.Content>
                 <SectionHeading
                     heading="Reviews"
-                    number="05"
+                    number="04"
                     text="Pare słów od naszych klientów"
                 />
                 <ReactGoogleReviews
