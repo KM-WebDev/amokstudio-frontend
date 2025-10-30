@@ -82,7 +82,7 @@ function FooterNaviagtion({ socials }: SocialFooterProps) {
                 <div className="flex flex-col gap-2 text-sm text-zinc-600">
                     <a
                         href="mailto:kontakt@jankowalski.pl"
-                        className="transition-colors hover:text-[#ca010b]"
+                        className="w-fit transition-colors hover:text-[#ca010b]"
                     >
                         kontakt@jankowalski.pl
                     </a>
