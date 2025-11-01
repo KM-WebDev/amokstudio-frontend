@@ -41,15 +41,18 @@ export default function HorizontalScrollCarousel({
     const y = useTransform(endScroll, [0, 1], ["0%", "70%"]);
 
     return (
-        <div ref={targetRef} className={cn("relative h-full", className)}>
+        <div
+            ref={targetRef}
+            className={cn("pointer-events-none relative h-full", className)}
+        >
             <motion.div
                 style={{ y }}
                 className="gap-sm sticky top-[30%] flex flex-col overflow-hidden"
             >
-                {title}
+                <div className="pointer-events-auto h-full w-full">{title}</div>
                 <motion.div
                     style={{ x, scale }}
-                    className="inline-flex w-fit justify-start gap-4"
+                    className="pointer-events-auto inline-flex w-fit justify-start gap-4"
                 >
                     {children}
                 </motion.div>
