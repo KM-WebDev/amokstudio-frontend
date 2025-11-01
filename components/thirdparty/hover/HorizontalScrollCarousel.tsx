@@ -1,7 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils/cn";
-import { useScroll, useTransform } from "motion/react";
+import {
+    useMotionTemplate,
+    useMotionValue,
+    useMotionValueEvent,
+    useScroll,
+    useTransform,
+} from "motion/react";
 import { motion } from "motion/react";
 import { ReactNode, useRef } from "react";
 
@@ -33,6 +39,7 @@ export default function HorizontalScrollCarousel({
     );
     const x = useTransform(scrollYProgress, [0.25, 1], ["10%", "-100%"]);
     const y = useTransform(endScroll, [0, 1], ["0%", "70%"]);
+
     return (
         <div ref={targetRef} className={cn("relative h-full", className)}>
             <motion.div

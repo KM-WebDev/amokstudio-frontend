@@ -10,14 +10,13 @@ export default async function HomePage() {
     return (
         <>
             <HomeHero />
-            <div>
+            <div className="z-100">
                 <HomeBento />
                 <HomeAbout />
                 <HomePortfolio />
                 <HomeFeature />
                 <HomeReviews />
                 <HomeFAQ />
-                <div className="h-screen" />
             </div>
         </>
     );

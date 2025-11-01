@@ -59,8 +59,8 @@ export default function HomePortfolio() {
     const Cards = cards.map((card) => <Card key={card.id} card={card} />);
 
     return (
-        <Section className="bg-clr-bg-dark">
-            <Section.Content className="z-100 w-full">
+        <Section className="bg-clr-bg-dark -z-10">
+            <Section.Content className="w-full">
                 <Breakpoint condition="more" breakpoint="lg">
                     <DesktopCarousel Top={Top} Cards={Cards} />
                 </Breakpoint>
@@ -102,12 +102,7 @@ function MobileCarousel({ Cards, className, Top }: CarouselProps) {
 
 function SectionTop({ className }: BasicComponentProps) {
     return (
-        <div
-            className={cn(
-                "gap-sm relative flex flex-col items-center",
-                className
-            )}
-        >
+        <div className={cn("gap-sm relative flex flex-col", className)}>
             <SectionHeading
                 heading="Portfolio"
                 number="03"
@@ -120,7 +115,7 @@ function SectionTop({ className }: BasicComponentProps) {
             <ButtonWithArrow
                 text="Zobacz wszystkie"
                 variant="secondary"
-                className="w-fit"
+                className="mx-auto w-fit"
             />
         </div>
     );

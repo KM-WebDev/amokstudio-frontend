@@ -45,7 +45,7 @@ export default function HomeFeature() {
                         number="05"
                         text="Kompleksowa usługa dostosowana do twoich potrzeb"
                     />
-                    <p className="text-clr-text-muted max-w-xl lg:mx-auto lg:text-center">
+                    <p className="text-clr-text-muted mx-auto max-w-xl md:text-center lg:mx-auto">
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Voluptas cupiditate optio esse alias possimus
                         reiciendis tempore dicta tenetur, ullam earum!

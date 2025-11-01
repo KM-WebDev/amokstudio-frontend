@@ -25,7 +25,7 @@ export default function HomeBento() {
 
 function Grid() {
     return (
-        <div className="gap-xs relative grid items-stretch max-lg:container lg:grid-cols-3">
+        <div className="gap-xs relative grid items-stretch max-lg:container sm:grid-cols-2 lg:grid-cols-3">
             <Left className="lg:col-start-1 lg:row-span-5" />
             <Top className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
             <Bottom className="lg:col-start-2 lg:row-span-3 lg:row-start-3" />
@@ -78,13 +78,16 @@ function ImageContainer({ children, className }: BasicComponentProps) {
 export function Left({ className }: BasicComponentProps) {
     return (
         <GridCard
-            className={cn("max-lg:rounded-t-4xl lg:rounded-l-4xl", className)}
+            className={cn(
+                "max-sm:rounded-t-4xl sm:rounded-tl-4xl lg:rounded-l-4xl",
+                className
+            )}
         >
-            <TextBox title="Logo i Branding" className="">
+            <TextBox title="Logo i Branding" className="sm:order-1 lg:order-0">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo.
             </TextBox>
-            <ImageContainer className="h-full grow max-lg:h-[450px] max-sm:h-[300px]">
+            <ImageContainer className="h-[300px] grow sm:h-full">
                 <Image
                     src={"/torba-amok.jpg"}
                     fill
@@ -99,7 +102,9 @@ export function Left({ className }: BasicComponentProps) {
 
 function Top({ className }: BasicComponentProps) {
     return (
-        <GridCard className={cn("", className)}>
+        <GridCard
+            className={cn("sm:rounded-tr-4xl lg:rounded-tr-xl", className)}
+        >
             <TextBox title="Logo i Branding">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo.
@@ -119,8 +124,10 @@ function Top({ className }: BasicComponentProps) {
 
 function Bottom({ className }: BasicComponentProps) {
     return (
-        <GridCard className={cn("", className)}>
-            <ImageContainer className="xs:h-[300px] h-[350px] max-lg:order-1 sm:h-[400px] lg:h-[200px]">
+        <GridCard
+            className={cn("sm:rounded-bl-4xl lg:rounded-bl-xl", className)}
+        >
+            <ImageContainer className="order-1 h-[250px] sm:order-0 sm:h-80 lg:h-[170px]">
                 <Image
                     src={"/menu.jpg"}
                     fill
@@ -140,9 +147,12 @@ function Bottom({ className }: BasicComponentProps) {
 function Right({ className }: BasicComponentProps) {
     return (
         <GridCard
-            className={cn("max-lg:rounded-b-4xl lg:rounded-r-4xl", className)}
+            className={cn(
+                "max-sm:rounded-b-4xl sm:rounded-br-4xl lg:rounded-r-4xl",
+                className
+            )}
         >
-            <ImageContainer className="h-full grow max-lg:order-1 max-lg:h-[550px] max-sm:h-[350px]">
+            <ImageContainer className="order-1 h-[350px] grow sm:h-full lg:order-0">
                 <Image
                     src={"/kebab-tshirt.png"}
                     fill

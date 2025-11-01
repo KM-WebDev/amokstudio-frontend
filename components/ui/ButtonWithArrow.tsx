@@ -9,7 +9,7 @@ export default function ButtonWithArrow({
 }: ButtonProps) {
     return (
         <Button className={className} {...props}>
-            <span className="group-hover/button:text-clr-brand-red flex items-center gap-1">
+            <span className="group-hover/button:text-clr-brand-red text-clr-brand-red-dark flex items-center gap-1">
                 <span>{text}</span>
                 <span>{children}</span>
                 <FaArrowCircleRight className="transition-transform group-hover/button:translate-x-0.5" />
